@@ -1,0 +1,48 @@
+﻿    @{ ViewBag.Title = "Home Page";
+                Layout = null; 
+    }
+<div class="Velkommen">
+
+    <h1>Velkommen til bilguiden.dk</h1>
+    <h3>Her kan du finde alt om biler</h3>
+    <div class="UdforskKnap">@Html.ActionLink("Start!", "Biler", "Home")</div>
+
+</div>
+
+
+<style>
+
+    h1 {
+        font-size: 3em;
+        font-weight: 700;
+    }
+
+    h3 {
+        font-size: 2.3em;
+        font-weight: 200;
+    }
+
+    .Velkommen {
+        text-align: center;
+        font-family: 'Poppins', sans-serif !important;
+        /* Center vertically and horizontally */
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .UdforskKnap {
+        border: 3px solid black;
+        border-radius: 40%;
+        display: inline-block;
+        padding: 2%;
+    }
+
+
+    .Velkommen a {
+        font-family: 'Poppins', sans-serif !important;
+        color: black;
+        text-decoration: none;
+    }
+</style>

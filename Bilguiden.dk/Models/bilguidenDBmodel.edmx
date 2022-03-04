@@ -1,0 +1,245 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="bilguidenDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Biler">
+          <Key>
+            <PropertyRef Name="Bil_ID" />
+          </Key>
+          <Property Name="Bil_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Mærke" Type="nvarchar" MaxLength="50" />
+          <Property Name="Model" Type="nvarchar" MaxLength="50" />
+          <Property Name="Årgang" Type="int" />
+          <Property Name="Nypris" Type="int" />
+          <Property Name="Gearkasse" Type="nvarchar" MaxLength="50" />
+          <Property Name="Træk" Type="nvarchar" MaxLength="50" />
+          <Property Name="Lastevne" Type="int" />
+          <Property Name="Vægt" Type="int" />
+          <Property Name="Acceleration" Type="int" />
+          <Property Name="Hestekræfter" Type="int" />
+          <Property Name="Newtonmeter" Type="int" />
+          <Property Name="Motor" Type="nvarchar" MaxLength="50" />
+          <Property Name="Drivmiddel" Type="nvarchar" MaxLength="50" />
+          <Property Name="Kubik" Type="int" />
+        </EntityType>
+        <EntityType Name="Bruger">
+          <Key>
+            <PropertyRef Name="Bruger_ID" />
+          </Key>
+          <Property Name="Bruger_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BrugerBil_ID" Type="int" Nullable="false" />
+          <Property Name="Fornavn" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Efternavn" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Brugernavn" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Adgangskode" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BrugerBil">
+          <Key>
+            <PropertyRef Name="BrugerBil_ID" />
+          </Key>
+          <Property Name="BrugerBil_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Bil_ID" Type="int" Nullable="false" />
+          <Property Name="Bruger_ID" Type="int" Nullable="false" />
+          <Property Name="Kilometer" Type="int" />
+          <Property Name="Brugtpris" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_BrugerBil_Bruger">
+          <End Role="Bruger" Type="Self.Bruger" Multiplicity="1" />
+          <End Role="BrugerBil" Type="Self.BrugerBil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bruger">
+              <PropertyRef Name="Bruger_ID" />
+            </Principal>
+            <Dependent Role="BrugerBil">
+              <PropertyRef Name="Bruger_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="bilguidenDBModelStoreContainer">
+          <EntitySet Name="Biler" EntityType="Self.Biler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bruger" EntityType="Self.Bruger" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BrugerBil" EntityType="Self.BrugerBil" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_BrugerBil_Bruger" Association="Self.FK_BrugerBil_Bruger">
+            <End Role="Bruger" EntitySet="Bruger" />
+            <End Role="BrugerBil" EntitySet="BrugerBil" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="bilguidenDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Biler">
+          <Key>
+            <PropertyRef Name="Bil_ID" />
+          </Key>
+          <Property Name="Bil_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Mærke" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Årgang" Type="Int32" />
+          <Property Name="Nypris" Type="Int32" />
+          <Property Name="Gearkasse" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Træk" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Lastevne" Type="Int32" />
+          <Property Name="Vægt" Type="Int32" />
+          <Property Name="Acceleration" Type="Int32" />
+          <Property Name="Hestekræfter" Type="Int32" />
+          <Property Name="Newtonmeter" Type="Int32" />
+          <Property Name="Motor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Drivmiddel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Kubik" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Bruger">
+          <Key>
+            <PropertyRef Name="Bruger_ID" />
+          </Key>
+          <Property Name="Bruger_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BrugerBil_ID" Type="Int32" Nullable="false" />
+          <Property Name="Fornavn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Efternavn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Brugernavn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Adgangskode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="BrugerBil" Relationship="Self.FK_BrugerBil_Bruger" FromRole="Bruger" ToRole="BrugerBil" />
+        </EntityType>
+        <EntityType Name="BrugerBil">
+          <Key>
+            <PropertyRef Name="BrugerBil_ID" />
+          </Key>
+          <Property Name="BrugerBil_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Bil_ID" Type="Int32" Nullable="false" />
+          <Property Name="Bruger_ID" Type="Int32" Nullable="false" />
+          <Property Name="Kilometer" Type="Int32" />
+          <Property Name="Brugtpris" Type="Int32" />
+          <NavigationProperty Name="Bruger" Relationship="Self.FK_BrugerBil_Bruger" FromRole="BrugerBil" ToRole="Bruger" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_BrugerBil_Bruger">
+          <End Role="Bruger" Type="Self.Bruger" Multiplicity="1" />
+          <End Role="BrugerBil" Type="Self.BrugerBil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bruger">
+              <PropertyRef Name="Bruger_ID" />
+            </Principal>
+            <Dependent Role="BrugerBil">
+              <PropertyRef Name="Bruger_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="bilguidenDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Biler" EntityType="Self.Biler" />
+          <EntitySet Name="Bruger" EntityType="Self.Bruger" />
+          <EntitySet Name="BrugerBil" EntityType="Self.BrugerBil" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <AssociationSet Name="FK_BrugerBil_Bruger" Association="Self.FK_BrugerBil_Bruger">
+            <End Role="Bruger" EntitySet="Bruger" />
+            <End Role="BrugerBil" EntitySet="BrugerBil" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="bilguidenDBModelStoreContainer" CdmEntityContainer="bilguidenDBEntities">
+          <EntitySetMapping Name="Biler">
+            <EntityTypeMapping TypeName="bilguidenDBModel.Biler">
+              <MappingFragment StoreEntitySet="Biler">
+                <ScalarProperty Name="Bil_ID" ColumnName="Bil_ID" />
+                <ScalarProperty Name="Mærke" ColumnName="Mærke" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Årgang" ColumnName="Årgang" />
+                <ScalarProperty Name="Nypris" ColumnName="Nypris" />
+                <ScalarProperty Name="Gearkasse" ColumnName="Gearkasse" />
+                <ScalarProperty Name="Træk" ColumnName="Træk" />
+                <ScalarProperty Name="Lastevne" ColumnName="Lastevne" />
+                <ScalarProperty Name="Vægt" ColumnName="Vægt" />
+                <ScalarProperty Name="Acceleration" ColumnName="Acceleration" />
+                <ScalarProperty Name="Hestekræfter" ColumnName="Hestekræfter" />
+                <ScalarProperty Name="Newtonmeter" ColumnName="Newtonmeter" />
+                <ScalarProperty Name="Motor" ColumnName="Motor" />
+                <ScalarProperty Name="Drivmiddel" ColumnName="Drivmiddel" />
+                <ScalarProperty Name="Kubik" ColumnName="Kubik" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bruger">
+            <EntityTypeMapping TypeName="bilguidenDBModel.Bruger">
+              <MappingFragment StoreEntitySet="Bruger">
+                <ScalarProperty Name="Bruger_ID" ColumnName="Bruger_ID" />
+                <ScalarProperty Name="BrugerBil_ID" ColumnName="BrugerBil_ID" />
+                <ScalarProperty Name="Fornavn" ColumnName="Fornavn" />
+                <ScalarProperty Name="Efternavn" ColumnName="Efternavn" />
+                <ScalarProperty Name="Brugernavn" ColumnName="Brugernavn" />
+                <ScalarProperty Name="Adgangskode" ColumnName="Adgangskode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BrugerBil">
+            <EntityTypeMapping TypeName="bilguidenDBModel.BrugerBil">
+              <MappingFragment StoreEntitySet="BrugerBil">
+                <ScalarProperty Name="BrugerBil_ID" ColumnName="BrugerBil_ID" />
+                <ScalarProperty Name="Bil_ID" ColumnName="Bil_ID" />
+                <ScalarProperty Name="Bruger_ID" ColumnName="Bruger_ID" />
+                <ScalarProperty Name="Kilometer" ColumnName="Kilometer" />
+                <ScalarProperty Name="Brugtpris" ColumnName="Brugtpris" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="bilguidenDBModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
