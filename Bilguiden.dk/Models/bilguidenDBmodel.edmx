@@ -18,12 +18,13 @@
           <Property Name="Træk" Type="nvarchar" MaxLength="50" />
           <Property Name="Lastevne" Type="int" />
           <Property Name="Vægt" Type="int" />
-          <Property Name="Acceleration" Type="int" />
+          <Property Name="Acceleration" Type="decimal" Precision="18" Scale="2" />
           <Property Name="Hestekræfter" Type="int" />
           <Property Name="Newtonmeter" Type="int" />
           <Property Name="Motor" Type="nvarchar" MaxLength="50" />
           <Property Name="Drivmiddel" Type="nvarchar" MaxLength="50" />
           <Property Name="Kubik" Type="int" />
+          <Property Name="Billede" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Bruger">
           <Key>
@@ -96,12 +97,13 @@
           <Property Name="Træk" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Lastevne" Type="Int32" />
           <Property Name="Vægt" Type="Int32" />
-          <Property Name="Acceleration" Type="Int32" />
+          <Property Name="Acceleration" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="Hestekræfter" Type="Int32" />
           <Property Name="Newtonmeter" Type="Int32" />
           <Property Name="Motor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Drivmiddel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Kubik" Type="Int32" />
+          <Property Name="Billede" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="Bruger">
           <Key>
@@ -182,6 +184,7 @@
                 <ScalarProperty Name="Motor" ColumnName="Motor" />
                 <ScalarProperty Name="Drivmiddel" ColumnName="Drivmiddel" />
                 <ScalarProperty Name="Kubik" ColumnName="Kubik" />
+                <ScalarProperty Name="Billede" ColumnName="Billede" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

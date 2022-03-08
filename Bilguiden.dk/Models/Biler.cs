@@ -7,12 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-
-namespace Bilguiden.dk.Models {
-    public partial class Biler {
-
+namespace Bilguiden.dk.Models
+{
+    using System;
+    using System.Collections.Generic;
+    
+    public partial class Biler
+    {
         public int Bil_ID { get; set; }
         public string Mærke { get; set; }
         public string Model { get; set; }
@@ -22,11 +23,12 @@ namespace Bilguiden.dk.Models {
         public string Træk { get; set; }
         public Nullable<int> Lastevne { get; set; }
         public Nullable<int> Vægt { get; set; }
-        public Nullable<int> Acceleration { get; set; }
+        public Nullable<decimal> Acceleration { get; set; }
         public Nullable<int> Hestekræfter { get; set; }
         public Nullable<int> Newtonmeter { get; set; }
         public string Motor { get; set; }
         public string Drivmiddel { get; set; }
         public Nullable<int> Kubik { get; set; }
+        public byte[] Billede { get; set; }
     }
 }

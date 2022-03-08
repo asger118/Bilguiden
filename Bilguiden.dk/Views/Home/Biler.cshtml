@@ -1,4 +1,5 @@
-﻿
+﻿@model IEnumerable<Bilguiden.dk.Models.Biler>
+
 @{
     ViewBag.Title = "Biler";
 }
@@ -6,3 +7,60 @@
 <h2>Biler</h2>
 
 @Html.ActionLink("Tilføj Bil", "TilføjBil", "home")
+
+<div class="indhold">
+    <!--For hver item/bil i databasen laver den dette-->
+    @foreach (var item in Model) {
+        <div class="pprodukter">
+            <div>
+                <!--Billede af Bil-->
+                <div>
+                    @{
+                        var base64 = Convert.ToBase64String(item.Billede);
+                        var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
+                    }
+                    <img src='@imgsrc' class="pbillede" />
+                </div>
+                <!--Bil model-->
+                <div style="text-align: center;">
+                    <h3>@item.Mærke @item.Model</h3>
+                </div>
+                <!--Beskrivelse af produkt-->
+                <div style="text-align: center">
+                    <p>@item.Årgang</p>
+                </div>
+            </div>
+        </div>
+    }
+    <br />
+</div>
+
+
+
+
+<style>
+
+    .pprodukter {
+        display: inline-block;
+        margin: 5px;
+        padding: 5px;
+        text-align: center;
+        border-radius: 15px;
+        width: 32%;
+        position: relative;
+        background-color: #ffffff;
+        border: 2px solid black
+    }
+
+    /*Style på produkt-billeder*/
+    .pbillede {
+        width: 95%;
+        height: 120px;
+        border-radius: 10px;
+    }
+
+    /*Style på prisen af produkterne*/
+    .pris {
+        text-align: right;
+    }
+</style>

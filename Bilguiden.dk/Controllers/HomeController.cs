@@ -7,57 +7,75 @@ using Bilguiden.dk.Models;
 
 namespace Bilguiden.dk.Controllers {
     public class HomeController : Controller {
+
         public ActionResult Index() {
             return View();
         }
 
-        public ActionResult Biler() { //View med alle biler fra databasen
 
-            List<Biler> AlleBiler = new List<Biler>();
+        //Tilføj biler til showroom page
+        public ActionResult Biler() {
+            
+            bilguidenDBEntities db = new bilguidenDBEntities();
+            var item = (from d in db.Biler
+                        select d).ToList();
+            return View(item);
+        }
 
+
+        //Tilføj bil til database
+        public ActionResult TilføjBil() {
             return View();
         }
 
-        public ActionResult TilføjBil() {   //Tilføj bil til database view
-            return View();
-        }
+        //Henter data fra model til database
         [HttpPost]
-        public ActionResult TilføjBil(TilføjBilModel NyBil) {
-            Biler Bil = new Biler();
-                Bil.Acceleration    = NyBil.Acceleration;
-                Bil.Drivmiddel      = NyBil.Drivmiddel;
-                Bil.Gearkasse       = NyBil.Gearkasse;
-                Bil.Hestekræfter    = NyBil.Hestekræfter;
-                Bil.Kubik           = NyBil.Kubik;
-                Bil.Lastevne        = NyBil.Lastevne;
-                Bil.Model           = NyBil.Model;
-                Bil.Motor           = NyBil.Motor;
-                Bil.Mærke           = NyBil.Mærke;
-                Bil.Newtonmeter     = NyBil.Newtonmeter;
-                Bil.Nypris          = NyBil.Nypris;
-                Bil.Træk            = NyBil.Træk;
-                Bil.Vægt            = NyBil.Vægt;
-                Bil.Årgang          = NyBil.Årgang;
+        public ActionResult TilføjBil(Biler NyBil, HttpPostedFileBase image1) { 
 
-            using(bilguidenDBEntities x = new bilguidenDBEntities()) {
-                x.Biler.Add(Bil);
-                x.SaveChanges();
+            bilguidenDBEntities x = new bilguidenDBEntities();
+
+            if (image1 != null) // hvis den ikke er lig med null
+            {
+                NyBil.Billede = new byte[image1.ContentLength];
+                image1.InputStream.Read(NyBil.Billede, 0, image1.ContentLength);
             }
 
+            x.Biler.Add(NyBil);
+
+            try {
+                x.SaveChanges();
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException dbEx) {
+                Exception raise = dbEx;
+                foreach (var validationErrors in dbEx.EntityValidationErrors) {
+                    foreach (var validationError in validationErrors.ValidationErrors) {
+                        string message = string.Format("{0}:{1}",
+                            validationErrors.Entry.Entity.ToString(),
+                            validationError.ErrorMessage);
+                        // raise a new exception nesting
+                        // the current instance as InnerException
+                        raise = new InvalidOperationException(message, raise);
+                    }
+                    throw raise;
+                }
+            }
             ViewBag.SavedData = true;
-            return View();
-        }
+            return View(NyBil);
+        } 
+
 
         public ActionResult About() {
-            ViewBag.Message = "Your application description page.";
+                ViewBag.Message = "Your application description page.";
 
-            return View();
+                return View();
+            }
+
+            public ActionResult Contact() {
+                ViewBag.Message = "Your contact page.";
+
+                return View();
+            }
         }
+   }
+    
 
-        public ActionResult Contact() {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-    }
-}
