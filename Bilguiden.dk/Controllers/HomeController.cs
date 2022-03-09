@@ -38,17 +38,7 @@ namespace Bilguiden.dk.Controllers {
         //Tilføj bil til database
         public ActionResult TilføjBil() {
 
-            ViewBag.ToSelectList = new SelectList(GetGearkassers(),"ID","Type");
             return View();
-        }
-
-        private List<Gearkasser> GetGearkassers() {
-
-            var gearkasser = new List<Gearkasser>();
-            gearkasser.Add(new Gearkasser() { ID = 1, Type = "Automatisk" });
-            gearkasser.Add(new Gearkasser() { ID = 2, Type = "Manuel" });
-
-            return gearkasser;
         }
 
         //Henter data fra model til database

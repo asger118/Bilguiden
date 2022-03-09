@@ -34,4 +34,16 @@ namespace Bilguiden.dk.Models
         public Nullable<int> Kubik { get; set; }
         public byte[] Billede { get; set; }
     }
+
+    public enum Gearkasse {
+        Automatisk, Manuel
+    }
+    
+    public enum Drivmiddel {
+        Benzin, Diesel, El, Hybrid
+    }
+
+    public enum Træk {
+        FWD, RWD, AWD
+    }
 }

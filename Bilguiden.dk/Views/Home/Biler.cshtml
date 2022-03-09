@@ -10,13 +10,18 @@
         <div class="pprodukter">
 
                 <!--Billede af bil-->
-                <div>
-                    @{
+            <div>
+                @{
+                    if (item.Billede != null) {
                         var base64 = Convert.ToBase64String(item.Billede);
                         var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
+                        <img src="@imgsrc" class="pbillede" />
                     }
-                    <img src="@imgsrc" class="pbillede"/>
-                </div>
+                    else {
+                        <img src="~/Images/Billede-mangler.jpg" class="pbillede" />
+                    }
+                }
+            </div>
 
                 <!--Bil model-->
                 <div style="text-align: center;">
