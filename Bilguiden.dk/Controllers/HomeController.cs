@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -33,7 +34,40 @@ namespace Bilguiden.dk.Controllers {
         //Rediger deltajer om bil
         public ActionResult RedigerBil(int Id) {
 
-            Biler bil = x.Biler.Find(Id);         
+            Biler bil = x.Biler.Find(Id);
+            return View(bil);
+        }
+
+        //Rediger detaljer om bil
+        [HttpPost]
+        public ActionResult RedigerBil(Biler bil, HttpPostedFileBase image1) {
+
+            if (ModelState.IsValid) {
+                if (image1 != null) {
+                    bil.Billede = new byte[image1.ContentLength];
+                    image1.InputStream.Read(bil.Billede, 0, image1.ContentLength);
+                }
+                try {
+                    x.SaveChanges();
+                }
+                catch (System.Data.Entity.Validation.DbEntityValidationException dbEx) {
+                    Exception raise = dbEx;
+                    foreach (var validationErrors in dbEx.EntityValidationErrors) {
+                        foreach (var validationError in validationErrors.ValidationErrors) {
+                            string message = string.Format("{0}:{1}",
+                                validationErrors.Entry.Entity.ToString(),
+                                validationError.ErrorMessage);
+                            // raise a new exception nesting
+                            // the current instance as InnerException
+                            raise = new InvalidOperationException(message, raise);
+                        }
+                        throw raise;
+                    }
+                }
+                x.Entry(bil).State = EntityState.Modified;
+                x.SaveChanges();
+            }
+            ViewBag.SavedData = true;
             return View(bil);
         }
 

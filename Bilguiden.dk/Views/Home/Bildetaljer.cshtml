@@ -10,11 +10,17 @@
     <hr />
     <div>
         @{
-            byte[] billede = Model.Billede;
-            var base64 = Convert.ToBase64String(billede);
-            var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
+            if (Model.Billede != null) {
+                byte[] billede = Model.Billede;
+                var base64 = Convert.ToBase64String(billede);
+                var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
+                <img src="@imgsrc" class="pbillede" />
+            }
+            else {
+                <img src="~/Images/Billede-mangler.jpg" class="pbillede" />
+            }
         }
-        <img src="@imgsrc" class="pbillede" />
+
     </div>
     <dl class="dl-horizontal">
 

@@ -141,8 +141,9 @@
         </div>
     </div>
 
-    <!--Billede-->
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <!--Billede-->
     <div class="form-group">
         @Html.LabelFor(model => model.Billede, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
@@ -152,18 +153,14 @@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Tilføj" class="btn btn-default" onclick="renForm" />
+            <input type="submit" value="Tilføj" class="btn btn-default" />
         </div>
     </div>
 </div>
 }
 
-@if (ViewBag.SavedData == true) { //Kode som tømmer formen og fortæller at den er gemt
-    <p class="alert alert-success"><strong>Done!</strong> Din bil er tilføjet!</p>
-    <script type="text/javascript">
-        function rensForm() { ModelState.Clear(); TryUpdateModel(Biler); }
-        Viewbag.SavedData == false;
-    </script>
+@if (ViewBag.SavedData == true) { 
+    <p class="alert alert-success"><strong>Success!</strong> Din bil er tilføjet!</p>   
 }
 
 <div>
