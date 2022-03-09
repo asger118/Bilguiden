@@ -1,0 +1,133 @@
+﻿@model Bilguiden.dk.Models.Biler
+
+@{
+    ViewBag.Title = "Bildetaljer";
+}
+
+<div>
+    <br />
+    <h2 class="Overskrift">@Html.DisplayFor(model => model.Mærke) </h2><h4 class="Overskrift">@Html.DisplayFor(model => model.Model)</h4>
+    <hr />
+    <div>
+        @{
+            byte[] billede = Model.Billede;
+            var base64 = Convert.ToBase64String(billede);
+            var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
+        }
+        <img src="@imgsrc" class="pbillede" />
+    </div>
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Årgang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Årgang)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nypris)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nypris)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gearkasse)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gearkasse)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Træk)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Træk)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Lastevne)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lastevne)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Vægt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vægt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Acceleration)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Acceleration)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hestekræfter)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hestekræfter)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Newtonmeter)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Newtonmeter)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Motor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Motor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Drivmiddel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Drivmiddel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kubik)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kubik)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Rediger", "RedigerBil", new { id = Model.Bil_ID })
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+
+<style>
+    .Overskrift{
+        display:inline;
+    }
+    img{
+        width: 20%;
+        height: 20%;
+    }
+</style>

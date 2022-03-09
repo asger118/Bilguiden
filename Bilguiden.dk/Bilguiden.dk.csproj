@@ -200,6 +200,7 @@
     <Compile Include="Models\BrugerBil.cs">
       <DependentUpon>bilguidenDBmodel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Gearkasser.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\sysdiagrams.cs">
@@ -283,6 +284,8 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\Biler.cshtml" />
     <Content Include="Views\Home\TilføjBil.cshtml" />
+    <Content Include="Views\Home\Bildetaljer.cshtml" />
+    <Content Include="Views\Home\RedigerBil.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

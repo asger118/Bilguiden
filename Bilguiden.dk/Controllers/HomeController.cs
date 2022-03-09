@@ -7,7 +7,9 @@ using Bilguiden.dk.Models;
 
 namespace Bilguiden.dk.Controllers {
     public class HomeController : Controller {
-
+       
+        bilguidenDBEntities x = new bilguidenDBEntities();
+        
         public ActionResult Index() {
             return View();
         }
@@ -15,27 +17,45 @@ namespace Bilguiden.dk.Controllers {
 
         //Tilføj biler til showroom page
         public ActionResult Biler() {
-            
-            bilguidenDBEntities db = new bilguidenDBEntities();
-            var item = (from d in db.Biler
+          
+            var item = (from d in x.Biler
                         select d).ToList();
             return View(item);
         }
 
+        //Detaljer om bil
+        public ActionResult Bildetaljer(int Bil_ID = 0) {
+            
+            Biler Bil = x.Biler.Find(Bil_ID);
+            return View(Bil);
+        }
+
+        //Rediger deltajer om bil
+        public ActionResult RedigerBil() {
+            return View();
+        }
 
         //Tilføj bil til database
         public ActionResult TilføjBil() {
+
+            ViewBag.ToSelectList = new SelectList(GetGearkassers(),"ID","Type");
             return View();
+        }
+
+        private List<Gearkasser> GetGearkassers() {
+
+            var gearkasser = new List<Gearkasser>();
+            gearkasser.Add(new Gearkasser() { ID = 1, Type = "Automatisk" });
+            gearkasser.Add(new Gearkasser() { ID = 2, Type = "Manuel" });
+
+            return gearkasser;
         }
 
         //Henter data fra model til database
         [HttpPost]
-        public ActionResult TilføjBil(Biler NyBil, HttpPostedFileBase image1) { 
+        public ActionResult TilføjBil(Biler NyBil, HttpPostedFileBase image1) {
 
-            bilguidenDBEntities x = new bilguidenDBEntities();
-
-            if (image1 != null) // hvis den ikke er lig med null
-            {
+            if (image1 != null) {   // hvis den ikke er lig med null
                 NyBil.Billede = new byte[image1.ContentLength];
                 image1.InputStream.Read(NyBil.Billede, 0, image1.ContentLength);
             }
