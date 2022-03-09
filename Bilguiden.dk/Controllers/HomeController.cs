@@ -31,8 +31,10 @@ namespace Bilguiden.dk.Controllers {
         }
 
         //Rediger deltajer om bil
-        public ActionResult RedigerBil() {
-            return View();
+        public ActionResult RedigerBil(int Id) {
+
+            Biler bil = x.Biler.Find(Id);         
+            return View(bil);
         }
 
         //Tilføj bil til database
