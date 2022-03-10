@@ -4,12 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="0c90d0db32b141f1832cf51a25ac6a05" Name="Diagram1">
-        <EntityTypeShape EntityType="bilguidenDBModel.Biler" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="bilguidenDBModel.Bruger" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="bilguidenDBModel.BrugerBil" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="bilguidenDBModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
-        <AssociationConnector Association="bilguidenDBModel.FK_BrugerBil_Bruger" ManuallyRouted="false" />
+      <Diagram DiagramId="93ca4d1539234382a685b2b1a61e1c9e" Name="Diagram1">
+        <EntityTypeShape EntityType="bilguidenDBModel.Biler" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="bilguidenDBModel.Bruger" Width="1.5" PointX="0.75" PointY="1" />
+        <EntityTypeShape EntityType="bilguidenDBModel.BrugerBil" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="bilguidenDBModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="4.75" />
+        <AssociationConnector Association="bilguidenDBModel.FK_BrugerBil_Bruger" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

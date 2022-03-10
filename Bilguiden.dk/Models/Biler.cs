@@ -11,14 +11,11 @@ namespace Bilguiden.dk.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Biler
     {
         public int Bil_ID { get; set; }
-        [Required]
         public string Mærke { get; set; }
-        [Required]
         public string Model { get; set; }
         public Nullable<int> Årgang { get; set; }
         public Nullable<int> Nypris { get; set; }
@@ -38,7 +35,7 @@ namespace Bilguiden.dk.Models
     public enum Gearkasse {
         Automatisk, Manuel
     }
-    
+
     public enum Drivmiddel {
         Benzin, Diesel, El, Hybrid
     }

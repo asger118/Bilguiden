@@ -9,7 +9,7 @@ using Bilguiden.dk.Models;
 namespace Bilguiden.dk.Controllers {
     public class HomeController : Controller {
        
-        bilguidenDBEntities x = new bilguidenDBEntities();
+        bilguidenDBEntities db = new bilguidenDBEntities();
         
         public ActionResult Index() {
             return View();
@@ -19,7 +19,7 @@ namespace Bilguiden.dk.Controllers {
         //Tilføj biler til showroom page
         public ActionResult Biler() {
           
-            var item = (from d in x.Biler
+            var item = (from d in db.Biler
                         select d).ToList();
             return View(item);
         }
@@ -27,14 +27,14 @@ namespace Bilguiden.dk.Controllers {
         //Detaljer om bil
         public ActionResult Bildetaljer(int Bil_ID = 0) {
             
-            Biler Bil = x.Biler.Find(Bil_ID);
+            Biler Bil = db.Biler.Find(Bil_ID);
             return View(Bil);
         }
 
         //Rediger deltajer om bil
         public ActionResult RedigerBil(int Id) {
 
-            Biler bil = x.Biler.Find(Id);
+            Biler bil = db.Biler.Find(Id);
             return View(bil);
         }
 
@@ -48,7 +48,7 @@ namespace Bilguiden.dk.Controllers {
                     image1.InputStream.Read(bil.Billede, 0, image1.ContentLength);
                 }
                 try {
-                    x.SaveChanges();
+                    db.SaveChanges();
                 }
                 catch (System.Data.Entity.Validation.DbEntityValidationException dbEx) {
                     Exception raise = dbEx;
@@ -64,8 +64,8 @@ namespace Bilguiden.dk.Controllers {
                         throw raise;
                     }
                 }
-                x.Entry(bil).State = EntityState.Modified;
-                x.SaveChanges();
+                db.Entry(bil).State = EntityState.Modified;
+                db.SaveChanges();
             }
             ViewBag.SavedData = true;
             return View(bil);
@@ -86,10 +86,10 @@ namespace Bilguiden.dk.Controllers {
                 image1.InputStream.Read(NyBil.Billede, 0, image1.ContentLength);
             }
 
-            x.Biler.Add(NyBil);
+            db.Biler.Add(NyBil);
 
             try {
-                x.SaveChanges();
+                db.SaveChanges();
             }
             catch (System.Data.Entity.Validation.DbEntityValidationException dbEx) {
                 Exception raise = dbEx;
