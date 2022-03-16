@@ -4,31 +4,106 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bilguiden - @ViewBag.Title</title>
+    <link rel="icon" type="image/png" href="~/Images/logobilnav.png" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <link rel="icon" type="image/png" href="~/Images/logobilnav.png" />
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 </head>
+
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <a><img style="width: 75px; height: auto;" src="~/Images/logobilnav.png" alt="logo" class="logo" /></a>
-                @Html.ActionLink("Bilguiden", "Biler", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
+
+    <nav>
+        <div class="menu-icon">
+            <span class="fas fa-bars"></span>
         </div>
-    </div>
+        <div class="logo">
+            <a href="~/Home"><img style="width: 50px; height: auto;" src="~/Images/logobilnav.png" alt="logo" class="logo" /> Bilguiden</a>
+        </div>
+
+
+        <!--
+        <div class="nav-items">
+                <li><a href="#">Home</a></li>
+                <li><a href="~Home/About">About</a></li>
+                <li><a href="#">Blogs</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Feedback</a></li>
+        </div>
+            -->
+
+        <div class="search-icon">
+            <span class="fas fa-search"></span>
+        </div>
+        <div class="cancel-icon">
+            <span class="fas fa-times"></span>
+        </div>
+        <form action="#">
+            <input type="search" class="search-data" placeholder="Søg på bil" required>
+            <button type="submit" class="fas fa-search"></button>
+        </form>
+    </nav>
+
+    <script>
+        const menuBtn = document.querySelector(".menu-icon span");
+        const searchBtn = document.querySelector(".search-icon");
+        const cancelBtn = document.querySelector(".cancel-icon");
+        const items = document.querySelector(".nav-items");
+        const form = document.querySelector("form");
+        menuBtn.onclick = () => {
+            items.classList.add("active");
+            menuBtn.classList.add("hide");
+            searchBtn.classList.add("hide");
+            cancelBtn.classList.add("show");
+        }
+        cancelBtn.onclick = () => {
+            items.classList.remove("active");
+            menuBtn.classList.remove("hide");
+            searchBtn.classList.remove("hide");
+            cancelBtn.classList.remove("show");
+            form.classList.remove("active");
+            cancelBtn.style.color = "#ff3d00";
+        }
+
+        searchBtn.onclick = () => {
+            form.classList.add("active");
+            searchBtn.classList.add("hide");
+            cancelBtn.classList.add("show");
+        }
+    </script>
+
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - bilguiden A/S</p>
-        </footer>
+    </div>
+
+    <!--Dette footeren-->
+    <div class="footer">
+        <div class="footer-content">
+            <div class="footer-section about">
+                <h4>Hvorfor vælge os?</h4>
+                <p><b>Selvforsygning</b></p>
+                <p>Økologi</p>
+                <p>Egne råvarer</p>
+                <p>Dejlig natur</p>
+                <p>Plads til at hygge sig</p>
+            </div>
+
+            <div class="footer-section Links">
+                <h4>Om os</h4>
+                <a href="https://www.facebook.com/Larkegaard"><p class="referencer">Facebook</p></a>
+                <a href="https://www.instagram.com/laerkegaarddk/"><p class="referencer">Instagram</p></a>
+            </div>
+
+            <div class="footer-section contact-form">
+                <a href="~/Home/Contact"><h4>Kontaktinformation</h4></a>
+                <p><b>Lærkegård</b></p>
+                <p>Markebækvej 2</p>
+                <p>3320 Skævinge</p>
+                <p>Telefon: 23 22 02 09</p>
+                <p>E-mail: bilguiden@support.dk</p>
+                <p>Persondatapolitik</p>
+            </div>
+        </div>
+        <div class="footer-bottom">&copy; Bilguiden.dk | @DateTime.Now.Year | Designet af Patrik & Asger</div>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
@@ -38,21 +113,145 @@
 </html>
 
 <style>
-    .logo {
-        float: left;
-        padding: 10px;
-        padding-right: 20px;
+
+    a {
+        text-decoration: none;
+        color: #fff;
+    }
+    a:hover{
+        text-decoration: none;
+        color: #fff;
     }
 
-    .navbar{
-        font-size: 30px;
-        
-        background-color: #0A4B58;
+    /*
+    * {
+        margin: 0;
+        padding: 0;
+        outline: none;
+        box-sizing: border-box;
+        font-family: 'Montserrat', sans-serif;
+    }
+        */
+
+    body {
+        background: #f2f2f2;
     }
 
-    a.navbar-brand{
-        font-size: 50px;
-        color: #FFFFFF;
+    nav {
+        background: #0A4B58;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        height: 70px;
+        padding: 0 100px;
     }
-   
+
+nav .logo{
+  color: #fff;
+  font-size: 30px;
+  font-weight: 600;
+  letter-spacing: -1px;
+}
+nav .nav-items{
+  display: flex;
+  flex: 1;
+  padding: 0 0 0 40px;
+}
+nav .nav-items li{
+  list-style: none;
+  padding: 0 15px;
+}
+nav .nav-items li a{
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  text-decoration: none;
+}
+nav .nav-items li a:hover{
+  color: #ff3d00;
+}
+        nav form {
+            display: flex;
+            height: 40px;
+            padding: 2px;
+            background: #FFF;
+            min-width: 18% !important;
+            border-radius: 2px;
+            border: 1px solid #072F38;
+        }
+nav form .search-data{
+  width: 100%;
+  height: 100%;
+  padding: 0 10px;
+  color: #000;
+  font-size: 17px;
+  border: none;
+  font-weight: 500;
+  background: none;
+}
+    nav form button {
+        padding: 0 15px;
+        color: #fff;
+        font-size: 17px;
+        background: #072F38;
+        border: none;
+        border-radius: 2px;
+        cursor: pointer;
+    }
+nav form button:hover{
+  background: #272727;
+}
+nav .menu-icon,
+nav .cancel-icon,
+nav .search-icon{
+  width: 40px;
+  text-align: center;
+  margin: 0 50px;
+  font-size: 18px;
+  color: #fff;
+  cursor: pointer;
+  display: none;
+}
+nav .menu-icon span,
+nav .cancel-icon,
+nav .search-icon{
+  display: none;
+}
+
+    /*Footer*/
+
+    h4 {
+        font-size: 25px;
+        color: #FFF;
+    }
+
+    .footer {
+        background: #313131;
+        color: #FFF;
+        height: 450px;
+        position: relative;
+    }
+
+        .footer .footer-content {
+            height: 400px;
+            display: flex;
+        }
+
+            .footer .footer-content .footer-section {
+                flex: 1;
+                padding: 25px;
+            }
+
+        .footer .footer-bottom {
+            background: #272727;
+            color: #FFF;
+            height: 50px;
+            width: 100%;
+            text-align: center;
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            padding-top: 20px;
+        }
 </style>
