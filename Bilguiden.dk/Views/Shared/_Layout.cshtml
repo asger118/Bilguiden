@@ -10,25 +10,13 @@
 </head>
 
 <body>
-
     <nav>
         <div class="menu-icon">
             <span class="fas fa-bars"></span>
         </div>
         <div class="logo">
-            <a href="~/Home"><img style="width: 50px; height: auto;" src="~/Images/logobilnav.png" alt="logo" class="logo" /> Bilguiden</a>
+            <a href="~/Home/Biler"><img style="width: 50px; height: auto;" src="~/Images/logobilnav.png" alt="logo" class="logo" /> Bilguiden</a>
         </div>
-
-
-        <!--
-        <div class="nav-items">
-                <li><a href="#">Home</a></li>
-                <li><a href="~Home/About">About</a></li>
-                <li><a href="#">Blogs</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="#">Feedback</a></li>
-        </div>
-            -->
 
         <div class="search-icon">
             <span class="fas fa-search"></span>
@@ -42,39 +30,11 @@
         </form>
     </nav>
 
-    <script>
-        const menuBtn = document.querySelector(".menu-icon span");
-        const searchBtn = document.querySelector(".search-icon");
-        const cancelBtn = document.querySelector(".cancel-icon");
-        const items = document.querySelector(".nav-items");
-        const form = document.querySelector("form");
-        menuBtn.onclick = () => {
-            items.classList.add("active");
-            menuBtn.classList.add("hide");
-            searchBtn.classList.add("hide");
-            cancelBtn.classList.add("show");
-        }
-        cancelBtn.onclick = () => {
-            items.classList.remove("active");
-            menuBtn.classList.remove("hide");
-            searchBtn.classList.remove("hide");
-            cancelBtn.classList.remove("show");
-            form.classList.remove("active");
-            cancelBtn.style.color = "#ff3d00";
-        }
-
-        searchBtn.onclick = () => {
-            form.classList.add("active");
-            searchBtn.classList.add("hide");
-            cancelBtn.classList.add("show");
-        }
-    </script>
-
     <div class="container body-content">
         @RenderBody()
     </div>
 
-    <!--Dette footeren-->
+    <!--footer-->
     <div class="footer">
         <div class="indhold">
             <div class="footer-content">
@@ -88,7 +48,7 @@
                 </div>
 
                 <div class="footer-section Links">
-                    <h4>Om os</h4>
+                    <a href="~/Home/About"><h4>Om os</h4></a>
                     <a href="https://www.facebook.com/Larkegaard"><p class="referencer">Facebook</p></a>
                     <a href="https://www.instagram.com/laerkegaarddk/"><p class="referencer">Instagram</p></a>
                 </div>
@@ -135,7 +95,7 @@
         */
 
     body {
-        background: #f2f2f2;
+        background: #FFFFFF;
         margin: 0;
     }
 
@@ -233,6 +193,7 @@ nav .search-icon{
         color: #FFF;
         height: 450px;
         position: relative;
+        margin-top: 30px;
     }
 
         .footer .footer-content {
@@ -261,5 +222,55 @@ nav .search-icon{
     .indhold {
         width: 80%;
         margin: 0 auto;
+        padding-top: 3%;
+    }
+
+    .bn3637 {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.7rem 2rem;
+        font-family: "Poppins", sans-serif;
+        font-weight: 700;
+        font-size: 18px;
+        color: #072F38;
+        background: #fff;
+        text-align: center;
+        text-decoration: none;
+        backface-visibility: hidden;
+        border: 0.3rem solid transparent;
+        border-radius: 3rem;
+    }
+
+    .bn36 {
+        border-color: #072F38;
+        transition: transform 0.2s cubic-bezier(0.235, 0, 0.05, 0.95);
+    }
+
+    .bn36:hover {
+            transform: perspective(1px) scale3d(1.044, 1.044, 1) translateZ(0) !important;
+            color: #072F38;
+    }
+    .field input {
+        font-size: 16px;
+        line-height: 28px;
+        padding: 8px 16px;
+        width: 100%;
+        min-height: 44px;
+        border: unset;
+        border-radius: 4px;
+        outline-color: rgb(84 105 212 / 0.5);
+        background-color: rgb(255, 255, 255);
+        box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(60, 66, 87, 0.16) 0px 0px 0px 1px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px;
+    }
+
+    .padding-bottom--24 {
+        padding-bottom: 24px;
+    }
+
+    .grid--50-50 {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        align-items: center;
     }
 </style>

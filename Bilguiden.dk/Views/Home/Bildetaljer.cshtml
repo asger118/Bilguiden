@@ -3,11 +3,8 @@
 @{
     ViewBag.Title = "Bildetaljer";
 }
-
+<div class="indhold">
 <div>
-    <br />
-    <h2 class="Overskrift">@Html.DisplayFor(model => model.Mærke) </h2><h4 class="Overskrift">@Html.DisplayFor(model => model.Model)</h4>
-    <hr />
     <div>
         @{
             if (Model.Billede != null) {
@@ -22,6 +19,9 @@
         }
 
     </div>
+    <h2 class="Overskrift">@Html.DisplayFor(model => model.Mærke) </h2><h4 class="Overskrift">@Html.DisplayFor(model => model.Model)</h4>
+    <hr />
+    
     <dl class="dl-horizontal">
 
         <dt>
@@ -122,11 +122,12 @@
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Rediger", "RedigerBil", new { id = Model.Bil_ID })
-    @Html.ActionLink("Back to List", "Biler", "home")
-</p>
 
+<div class="knapper">
+    @Html.ActionLink("Tilbage", "Biler", "home", htmlAttributes: new { @class = "bn3637 bn36" })
+    @Html.ActionLink("Rediger", "RedigerBil", new { id = Model.Bil_ID }, htmlAttributes: new { @class = "bn3637 bn36" })
+</div>
+</div>
 
 <style>
     .Overskrift{
@@ -136,4 +137,5 @@
         width: 20%;
         height: 20%;
     }
+    
 </style>

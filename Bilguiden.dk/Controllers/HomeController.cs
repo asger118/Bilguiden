@@ -42,6 +42,9 @@ namespace Bilguiden.dk.Controllers {
         [HttpPost]
         public ActionResult RedigerBil(Biler bil, HttpPostedFileBase image1) {
 
+                db.Entry(bil).State = EntityState.Modified;
+                db.SaveChanges();
+
             if (ModelState.IsValid) {
                 if (image1 != null) {
                     bil.Billede = new byte[image1.ContentLength];
@@ -64,8 +67,6 @@ namespace Bilguiden.dk.Controllers {
                         throw raise;
                     }
                 }
-                db.Entry(bil).State = EntityState.Modified;
-                db.SaveChanges();
             }
             ViewBag.SavedData = true;
             return View(bil);

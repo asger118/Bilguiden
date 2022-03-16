@@ -4,10 +4,6 @@
     ViewBag.Title = "Biler";
  }
 
-
-
-
-<div class="indhold">
     <!--For hver item/bil i databasen laver den dette-->
     @foreach (var item in Model) {
         <div class="pprodukter">
@@ -38,18 +34,13 @@
 
                 <!--Knapper-->
                 <div>
-                    <button>@Html.ActionLink("Sammenlign","xxx","home")</button>
-                    <button>@Html.ActionLink("Detaljer", "Bildetaljer", new { Bil_ID = item.Bil_ID })</button>
+                    @Html.ActionLink("Sammenlign", "xxx", "home", htmlAttributes: new { @class = "bn3637 bn36" })
+                    @Html.ActionLink("Detaljer", "Bildetaljer", new { Bil_ID = item.Bil_ID }, htmlAttributes: new { @class = "bn3637 bn36" })
                 </div>
         </div>
     }
-    <br />
-</div>
-
-@Html.ActionLink("Tilføj Bil", "TilføjBil", "home")
-
-
-
+<br />
+    @Html.ActionLink("Tilføj Bil", "TilføjBil", "home", htmlAttributes: new { @class = "bn3637 bn36" })
 <style>
 
     .pprodukter {
@@ -59,7 +50,7 @@
         text-align: center;
         border-radius: 15px;
         width: 32%;
-        background-color: #ffffff;
+        background-color: #fff;
         border: 2px solid black
     }
 
@@ -71,8 +62,10 @@
     }
 
     .overskrift{
-
+        color: #072f38;
         display:inline;
     }
+
+    
 </style>
 
