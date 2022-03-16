@@ -4,12 +4,15 @@
     ViewBag.Title = "Biler";
  }
 
+
+
+
 <div class="indhold">
     <!--For hver item/bil i databasen laver den dette-->
     @foreach (var item in Model) {
         <div class="pprodukter">
 
-                <!--Billede af bil-->
+             <!--Billede af bil-->
             <div>
                 @{
                     if (item.Billede != null) {

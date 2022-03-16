@@ -116,12 +116,27 @@ namespace Bilguiden.dk.Controllers {
                 return View();
             }
 
-            public ActionResult Contact() {
+        public ActionResult Contact() {
                 ViewBag.Message = "Your contact page.";
 
                 return View();
-            }
         }
+        //the first parameter is the option that we choose and the second parameter will use the textbox value  
+        public ActionResult test(string option, string search) {
+
+                //if a user choose the radio button option as Subject  
+                if (option == "Drivmiddel") {
+                    //Index action method will return a view with a student records based on what a user specify the value in textbox  
+                    return View(db.Biler.Where(x => x.Drivmiddel== search || search == null).ToList());
+                }
+                else if (option == "Model") {
+                    return View(db.Biler.Where(x => x.Model == search || search == null).ToList());
+                }
+                else {
+                    return View(db.Biler.Where(x => x.Mærke.StartsWith(search) || search == null).ToList());
+                }
+        }
+    }
    }
     
 
