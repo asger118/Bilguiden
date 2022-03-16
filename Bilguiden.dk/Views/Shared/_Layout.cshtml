@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bilguiden - @ViewBag.Title</title>
     <link rel="icon" type="image/png" href="~/Images/logobilnav.png" />
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 </head>
 
@@ -77,30 +75,32 @@
 
     <!--Dette footeren-->
     <div class="footer">
-        <div class="footer-content">
-            <div class="footer-section about">
-                <h4>Hvorfor vælge os?</h4>
-                <p><b>Selvforsygning</b></p>
-                <p>Økologi</p>
-                <p>Egne råvarer</p>
-                <p>Dejlig natur</p>
-                <p>Plads til at hygge sig</p>
-            </div>
+        <div class="indhold">
+            <div class="footer-content">
+                <div class="footer-section about">
+                    <h4>Hvorfor vælge os?</h4>
+                    <p><b>Selvforsygning</b></p>
+                    <p>Økologi</p>
+                    <p>Egne råvarer</p>
+                    <p>Dejlig natur</p>
+                    <p>Plads til at hygge sig</p>
+                </div>
 
-            <div class="footer-section Links">
-                <h4>Om os</h4>
-                <a href="https://www.facebook.com/Larkegaard"><p class="referencer">Facebook</p></a>
-                <a href="https://www.instagram.com/laerkegaarddk/"><p class="referencer">Instagram</p></a>
-            </div>
+                <div class="footer-section Links">
+                    <h4>Om os</h4>
+                    <a href="https://www.facebook.com/Larkegaard"><p class="referencer">Facebook</p></a>
+                    <a href="https://www.instagram.com/laerkegaarddk/"><p class="referencer">Instagram</p></a>
+                </div>
 
-            <div class="footer-section contact-form">
-                <a href="~/Home/Contact"><h4>Kontaktinformation</h4></a>
-                <p><b>Lærkegård</b></p>
-                <p>Markebækvej 2</p>
-                <p>3320 Skævinge</p>
-                <p>Telefon: 23 22 02 09</p>
-                <p>E-mail: bilguiden@support.dk</p>
-                <p>Persondatapolitik</p>
+                <div class="footer-section contact-form">
+                    <a href="~/Home/Contact"><h4>Kontaktinformation</h4></a>
+                    <p><b>Lærkegård</b></p>
+                    <p>Markebækvej 2</p>
+                    <p>3320 Skævinge</p>
+                    <p>Telefon: 23 22 02 09</p>
+                    <p>E-mail: bilguiden@support.dk</p>
+                    <p>Persondatapolitik</p>
+                </div>
             </div>
         </div>
         <div class="footer-bottom">&copy; Bilguiden.dk | @DateTime.Now.Year | Designet af Patrik & Asger</div>
@@ -135,6 +135,7 @@
 
     body {
         background: #f2f2f2;
+        margin: 0;
     }
 
     nav {
@@ -227,7 +228,7 @@ nav .search-icon{
     }
 
     .footer {
-        background: #313131;
+        background: #0A4B58;
         color: #FFF;
         height: 450px;
         position: relative;
@@ -244,7 +245,7 @@ nav .search-icon{
             }
 
         .footer .footer-bottom {
-            background: #272727;
+            background: #072F38;
             color: #FFF;
             height: 50px;
             width: 100%;
@@ -254,4 +255,10 @@ nav .search-icon{
             left: 0px;
             padding-top: 20px;
         }
+
+        /*style andet*/
+    .indhold {
+        width: 80%;
+        margin: 0 auto;
+    }
 </style>
