@@ -1,28 +1,23 @@
 ﻿@model Bilguiden.dk.Models.Biler
 @using Bilguiden.dk.Models
 
-@{
-    ViewBag.Title = "Tilføj Bil";
-}
 
-@using (Html.BeginForm("TilføjBil", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
+@using (Html.BeginForm("TilføjBil", "Home", FormMethod.Post, new { enctype = "multipart/form-data" })) {
     @Html.AntiForgeryToken()
-    
-<div class="TilføjBil-Form">
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
+<div class="indhold">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <div class="grid--50-50">
         <!--Data mærke-->
         <div class="field padding-bottom--24">
-            @Html.LabelFor(model => model.Mærke, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Mærke, htmlAttributes: new { @class = "control-label" })
             @Html.EditorFor(model => model.Mærke, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.Mærke, "", new { @class = "text-danger" })
         </div>
 
         <!--Data model-->
         <div class="field padding-bottom--24">
-            @Html.LabelFor(model => model.Model, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Model, htmlAttributes: new { @class = "control-label" })
             @Html.EditorFor(model => model.Model, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.Model, "", new { @class = "text-danger" })
         </div>
@@ -31,14 +26,14 @@
     <div class="grid--50-50">
         <!--Data Årgang-->
         <div class="field padding-bottom--24">
-            @Html.LabelFor(model => model.Årgang, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Årgang, htmlAttributes: new { @class = "control-label" })
             @Html.EditorFor(model => model.Årgang, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.Årgang, "", new { @class = "text-danger" })
         </div>
 
         <!--Data Nypris-->
         <div class="field padding-bottom--24">
-            @Html.LabelFor(model => model.Nypris, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Nypris, htmlAttributes: new { @class = "control-label" })
             @Html.EditorFor(model => model.Nypris, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.Nypris, "", new { @class = "text-danger" })
         </div>
@@ -47,14 +42,14 @@
     <div class="grid--50-50">
         <!--Data Gearkasse-->
         <div class="field padding-bottom--24">
-            @Html.LabelFor(model => model.Gearkasse, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Gearkasse, htmlAttributes: new { @class = "control-label" })
             @Html.DropDownListFor(model => model.Gearkasse, new SelectList(Enum.GetValues(typeof(Gearkasse))), "Vælg type", new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.Gearkasse, "", new { @class = "text-danger" })
         </div>
 
         <!--Data Træk-->
         <div class="field padding-bottom--24">
-            @Html.LabelFor(model => model.Træk, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Træk, htmlAttributes: new { @class = "control-label" })
             @Html.DropDownListFor(model => model.Træk, new SelectList(Enum.GetValues(typeof(Træk))), "Vælg type", new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.Træk, "", new { @class = "text-danger" })
         </div>
@@ -63,14 +58,14 @@
     <div class="grid--50-50">
         <!--Data Lastevne-->
         <div class="field padding-bottom--24">
-            @Html.LabelFor(model => model.Lastevne, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Lastevne, htmlAttributes: new { @class = "control-label" })
             @Html.EditorFor(model => model.Lastevne, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.Lastevne, "", new { @class = "text-danger" })
         </div>
 
         <!--Data Vægt-->
         <div class="form-group">
-            @Html.LabelFor(model => model.Vægt, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Vægt, htmlAttributes: new { @class = "control-label" })
             @Html.EditorFor(model => model.Vægt, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.Vægt, "", new { @class = "text-danger" })
         </div>
@@ -79,14 +74,14 @@
     <div class="grid--50-50">
         <!--Data Acceleration-->
         <div class="field padding-bottom--24">
-            @Html.LabelFor(model => model.Acceleration, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Acceleration, htmlAttributes: new { @class = "control-label" })
             @Html.EditorFor(model => model.Acceleration, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.Acceleration, "", new { @class = "text-danger" })
         </div>
 
         <!--Data Hestekræfter-->
         <div class="field padding-bottom--24">
-            @Html.LabelFor(model => model.Hestekræfter, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Hestekræfter, htmlAttributes: new { @class = "control-label" })
             @Html.EditorFor(model => model.Hestekræfter, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.Hestekræfter, "", new { @class = "text-danger" })
         </div>
@@ -95,14 +90,14 @@
     <div class="grid--50-50">
         <!--Data Newtonmeter-->
         <div class="field padding-bottom--24">
-            @Html.LabelFor(model => model.Newtonmeter, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Newtonmeter, htmlAttributes: new { @class = "control-label" })
             @Html.EditorFor(model => model.Newtonmeter, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.Newtonmeter, "", new { @class = "text-danger" })
         </div>
 
         <!--Data Motor-->
         <div class="field padding-bottom--24">
-            @Html.LabelFor(model => model.Motor, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Motor, htmlAttributes: new { @class = "control-label" })
             @Html.EditorFor(model => model.Motor, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.Motor, "", new { @class = "text-danger" })
         </div>
@@ -111,88 +106,66 @@
     <div class="grid--50-50">
         <!--Data drivmiddel-->
         <div class="field padding-bottom--24">
-            @Html.LabelFor(model => model.Drivmiddel, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Drivmiddel, htmlAttributes: new { @class = "control-label" })
             @Html.DropDownListFor(model => model.Drivmiddel, new SelectList(Enum.GetValues(typeof(Drivmiddel))), "Vælg type", new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.Drivmiddel, "", new { @class = "text-danger" })
         </div>
 
         <!--Data Kubik-->
         <div class="field padding-bottom--24">
-            @Html.LabelFor(model => model.Kubik, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Kubik, htmlAttributes: new { @class = "control-label" })
             @Html.EditorFor(model => model.Kubik, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.Kubik, "", new { @class = "text-danger" })
         </div>
     </div>
 
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        <!--Billede-->
-        <div class="form-group">
-            @Html.LabelFor(model => model.Billede, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <input type="file" id="image1" name="image1" />
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Tilføj" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-    }
-
-    @if (ViewBag.SavedData == true) {
-        <p class="alert alert-success"><strong>Success!</strong> Din bil er tilføjet!</p>
-    }
-
-    <div>
-        @Html.ActionLink("Tilbage", "Biler", "home")
+    <!--Billede-->
+    <div class="form-group">
+        @Html.LabelFor(model => model.Billede, htmlAttributes: new { @class = "control-label" })
+        <input type="file" id="image1" name="image1" />
     </div>
 
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Tilføj" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
 
-    <style>
+@if (ViewBag.SavedData == true) {
+    <p class="alert alert-success"><strong>Success!</strong> Din bil er tilføjet!</p>
+}
 
-        .TilføjBil-Form {
-            background: #fff;
-            display: flex;
-            width: 100%;
-            min-height: 100vh;
-            overflow: hidden;
-        }
-        * {
-            padding: 0;
-            margin: 0;
-            color: #1a1f36;
-            box-sizing: border-box;
-            word-wrap: break-word;
-            font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Ubuntu,sans-serif;
-        }
+<div>
+    @Html.ActionLink("Tilbage", "Biler", "home")
+</div>
 
-        body {
-            min-height: 100%;
-            background-color: #ffffff;
-        }
-        .field input {
-            font-size: 16px;
-            line-height: 28px;
-            padding: 8px 16px;
-            width: 100%;
-            min-height: 44px;
-            border: unset;
-            border-radius: 4px;
-            outline-color: rgb(84 105 212 / 0.5);
-            background-color: rgb(255, 255, 255);
-            box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(60, 66, 87, 0.16) 0px 0px 0px 1px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px;
-        }
 
-        .padding-bottom--24 {
-            padding-bottom: 24px;
-        }
+<style>
 
-        .grid--50-50 {
-            display: grid;
-            grid-template-columns: 50% 50%;
-            align-items: center;
-        }
-    </style>
+    .field input {
+        font-size: 16px;
+        line-height: 28px;
+        padding: 8px 16px;
+        width: 100%;
+        min-height: 44px;
+        border: unset;
+        border-radius: 4px;
+        outline-color: rgb(84 105 212 / 0.5);
+        background-color: rgb(255, 255, 255);
+        box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(60, 66, 87, 0.16) 0px 0px 0px 1px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px;
+    }
+
+    .padding-bottom--24 {
+        padding-bottom: 24px;
+    }
+
+    .grid--50-50 {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        align-items: center;
+    }
+</style>
