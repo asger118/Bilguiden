@@ -11,23 +11,32 @@
 
 <body>
     <nav>
-        <div class="menu-icon">
-            <span class="fas fa-bars"></span>
-        </div>
         <div class="logo">
             <a href="~/Home/Biler"><img style="width: 50px; height: auto;" src="~/Images/logobilnav.png" alt="logo" class="logo" /> Bilguiden</a>
         </div>
 
-        <div class="search-icon">
-            <span class="fas fa-search"></span>
+        <div class="knapper">
+            <div class="search-icon">
+                <span class="fas fa-search"></span>
+            </div>
+
+            <div class="cancel-icon">
+                <span class="fas fa-times"></span>
+            </div>
+
+            <form action="#">
+                <input type="search" class="search-data" placeholder="Søg på bil" required>
+                <button type="submit" class="fas fa-search"></button>
+            </form>
+
+            <div class="dropdownsøg">
+                <a href="~/Home/Biler"><img style="width: 30px; height: auto;" src="~/Images/logobilnav.png" /></a>
+            </div>
+
+            <div class="bruger">
+                <a href="~/Home/Biler"><img style="width: 30px; height: auto;" src="~/Images/logobilnav.png" /></a>
+            </div>
         </div>
-        <div class="cancel-icon">
-            <span class="fas fa-times"></span>
-        </div>
-        <form action="#">
-            <input type="search" class="search-data" placeholder="Søg på bil" required>
-            <button type="submit" class="fas fa-search"></button>
-        </form>
     </nav>
 
     <div class="container body-content">
@@ -272,5 +281,17 @@ nav .search-icon{
         display: grid;
         grid-template-columns: 50% 50%;
         align-items: center;
+    }
+    
+    .knapper {
+        display: flex;
+    }
+
+    .dropdownsøg{
+        margin-left: 5%;
+    }
+
+    .bruger{
+        margin-left:5%;
     }
 </style>
