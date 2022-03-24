@@ -1,6 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+    @using Bilguiden.dk.Models
     @Styles.Render("~/Content/css")
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,12 +25,15 @@
         <div class="cancel-icon">
             <span class="fas fa-times"></span>
         </div>
-        <form action="#">
-            <input type="search" class="search-data" placeholder="Søg på bil" required>
-            <button type="submit" class="fas fa-search"></button>
+        <form>
+            @using (Html.BeginForm("test", "Home", FormMethod.Get)) {
+                @Html.DropDownList("option", new SelectList(Enum.GetValues(typeof(Dropdown))), "Vælg type")
+                @Html.TextBox("search", null, new { @placeholder = "Søg på bil", @class = "search-data" })
+                <button type="submit" value="Search" name="submit" class="fas fa-search"></button>
+            }
         </form>
+       
     </nav>
-
     <div class="container body-content">
         @RenderBody()
     </div>
@@ -152,7 +156,7 @@ nav form .search-data{
   font-weight: 500;
   background: none;
 }
-    nav form button {
+nav form button {
         padding: 0 15px;
         color: #fff;
         font-size: 17px;
@@ -160,7 +164,7 @@ nav form .search-data{
         border: none;
         border-radius: 2px;
         cursor: pointer;
-    }
+}
 nav form button:hover{
   background: #272727;
 }

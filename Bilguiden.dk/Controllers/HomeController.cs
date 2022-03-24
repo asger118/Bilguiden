@@ -16,14 +16,6 @@ namespace Bilguiden.dk.Controllers {
         }
 
 
-        //Tilføj biler til showroom page
-        public ActionResult Biler() {
-          
-            var item = (from d in db.Biler
-                        select d).ToList();
-            return View(item);
-        }
-
         //Detaljer om bil
         public ActionResult Bildetaljer(int Bil_ID = 0) {
             
@@ -123,20 +115,24 @@ namespace Bilguiden.dk.Controllers {
                 return View();
         }
         //the first parameter is the option that we choose and the second parameter will use the textbox value  
-        public ActionResult test(string option, string search) {
+        public ActionResult Biler(string option, string search) {
 
-                //if a user choose the radio button option as Subject  
-                if (option == "Drivmiddel") {
-                    //Index action method will return a view with a student records based on what a user specify the value in textbox  
-                    return View(db.Biler.Where(x => x.Drivmiddel== search || search == null).ToList());
-                }
-                else if (option == "Model") {
-                    return View(db.Biler.Where(x => x.Model == search || search == null).ToList());
-                }
-                else {
-                    return View(db.Biler.Where(x => x.Mærke.StartsWith(search) || search == null).ToList());
-                }
+            //if a user choose the radio button option as Subject  
+            if (option == "Drivmiddel") {
+                //Index action method will return a view with a student records based on what a user specify the value in textbox  
+                return View(db.Biler.Where(x => x.Drivmiddel == search || search == null).ToList());
+            }
+            else if (option == "Model") {
+                return View(db.Biler.Where(x => x.Model == search || search == null).ToList());
+            }
+            else if (option == "Gearkasse") {
+                return View(db.Biler.Where(x => x.Gearkasse == search || search == null).ToList());
+            }
+            else {
+                return View(db.Biler.Where(x => x.Mærke.StartsWith(search) || search == null).ToList());
+            }
         }
+        
     }
    }
     

@@ -46,4 +46,8 @@ namespace Bilguiden.dk.Models
     public enum Træk {
         FWD, RWD, AWD
     }
+
+    public enum Dropdown {
+        Gearkasse, Model, Mærke, Drivmiddel
+    }
 }
