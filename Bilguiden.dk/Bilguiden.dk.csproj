@@ -227,6 +227,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="Images\biler.jpg" />
     <Content Include="Images\Billede-mangler.jpg" />
+    <Content Include="Images\Bruger.png" />
+    <Content Include="Images\dropdown.png" />
     <Content Include="Images\logobilnav.png" />
     <Content Include="Models\bilguidenDBmodel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
