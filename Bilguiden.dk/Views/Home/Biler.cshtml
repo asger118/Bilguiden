@@ -1,9 +1,8 @@
 ﻿@model IEnumerable<Bilguiden.dk.Models.Biler>
-
 @{
     ViewBag.Title = "Biler";
+    <script src="~/Scripts/Script/Funktioner.js"></script>
  }
-
     <!--For hver item/bil i databasen laver den dette-->
     @foreach (var item in Model) {
         <div class="pprodukter">
@@ -34,7 +33,7 @@
 
                 <!--Knapper-->
                 <div>
-                    @Html.ActionLink("Sammenlign", "xxx", "home", htmlAttributes: new { @class = "bn3637 bn36" })
+                    <button onclick="GetBil_ID(@item.Bil_ID)" class="bn3637 bn36 knap">Sammenlign</button>
                     @Html.ActionLink("Detaljer", "Bildetaljer", new { Bil_ID = item.Bil_ID }, htmlAttributes: new { @class = "bn3637 bn36" })
                 </div>
         </div>
@@ -65,7 +64,6 @@
         color: #072f38;
         display:inline;
     }
-
+   
     
 </style>
-

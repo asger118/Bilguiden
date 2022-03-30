@@ -17,49 +17,28 @@ namespace Bilguiden.dk.Controllers {
 
 
         //Detaljer om bil
-        public ActionResult Bildetaljer(int Bil_ID = 0) {
+        public ActionResult Bildetaljer(int? Bil_ID) {
             
             Biler Bil = db.Biler.Find(Bil_ID);
             return View(Bil);
         }
 
-        //Rediger deltajer om bil
-        public ActionResult RedigerBil(int Id) {
+        
 
-            Biler bil = db.Biler.Find(Id);
+        //Rediger deltajer om bil
+        public ActionResult RedigerBil(int? id) {
+
+            Biler bil = db.Biler.Find(id);
             return View(bil);
         }
 
         //Rediger detaljer om bil
         [HttpPost]
-        public ActionResult RedigerBil(Biler bil, HttpPostedFileBase image1) {
+        public ActionResult RedigerBil(Biler bil) {
 
                 db.Entry(bil).State = EntityState.Modified;
                 db.SaveChanges();
 
-            if (ModelState.IsValid) {
-                if (image1 != null) {
-                    bil.Billede = new byte[image1.ContentLength];
-                    image1.InputStream.Read(bil.Billede, 0, image1.ContentLength);
-                }
-                try {
-                    db.SaveChanges();
-                }
-                catch (System.Data.Entity.Validation.DbEntityValidationException dbEx) {
-                    Exception raise = dbEx;
-                    foreach (var validationErrors in dbEx.EntityValidationErrors) {
-                        foreach (var validationError in validationErrors.ValidationErrors) {
-                            string message = string.Format("{0}:{1}",
-                                validationErrors.Entry.Entity.ToString(),
-                                validationError.ErrorMessage);
-                            // raise a new exception nesting
-                            // the current instance as InnerException
-                            raise = new InvalidOperationException(message, raise);
-                        }
-                        throw raise;
-                    }
-                }
-            }
             ViewBag.SavedData = true;
             return View(bil);
         }
