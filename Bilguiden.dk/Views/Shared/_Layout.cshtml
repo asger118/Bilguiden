@@ -19,20 +19,23 @@
             <a href="~/Home/Biler"><img style="width: 50px; height: auto;" src="~/Images/logobilnav.png" alt="logo" class="logo" /> Bilguiden</a>
         </div>
 
-        <div class="search-icon">
-            <span class="fas fa-search"></span>
-        </div>
-        <div class="cancel-icon">
-            <span class="fas fa-times"></span>
-        </div>
-        <form>
-            @using (Html.BeginForm("test", "Home", FormMethod.Get)) {
+        <div class="knapper">
+            <div class="search-icon">
+                <span class="fas fa-search"></span>
+            </div>
+            <div class="cancel-icon">
+                <span class="fas fa-times"></span>
+            </div>
+            <form>
+                @using (Html.BeginForm("test", "Home", FormMethod.Get)) {
                 @Html.DropDownList("option", new SelectList(Enum.GetValues(typeof(Dropdown))), "Vælg type")
                 @Html.TextBox("search", null, new { @placeholder = "Søg på bil", @class = "search-data" })
                 <button type="submit" value="Search" name="submit" class="fas fa-search"></button>
             }
-        </form>
-       
+            </form>
+
+            <a href="~/Account/Login"><img style="width: 40px; height: auto;" src="~/Images/Bruger.png" class="bruger" /></a>
+        </div>
     </nav>
     <div class="container body-content">
         @RenderBody()
@@ -276,5 +279,13 @@ nav .search-icon{
         display: grid;
         grid-template-columns: 50% 50%;
         align-items: center;
+    }
+
+    .knapper{
+        display: flex;
+    }
+
+    .bruger{
+        margin-left: 50%;
     }
 </style>
