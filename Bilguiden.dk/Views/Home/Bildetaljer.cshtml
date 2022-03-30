@@ -4,138 +4,165 @@
     ViewBag.Title = "Bildetaljer";
 }
 <div class="indhold">
-<div>
-    <div>
-        @{
-            if (Model.Billede != null) {
-                byte[] billede = Model.Billede;
-                var base64 = Convert.ToBase64String(billede);
-                var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
-                <img src="@imgsrc" class="pbillede" />
+        <div class="bilbillede">
+            @{
+                if (Model.Billede != null)
+                {
+                    byte[] billede = Model.Billede;
+                    var base64 = Convert.ToBase64String(billede);
+                    var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
+                    <img src="@imgsrc" class="pbillede" />
+                }
+                else
+                {
+                    <img src="~/Images/Billede-mangler.jpg" class="pbillede" />
+                }
             }
-            else {
-                <img src="~/Images/Billede-mangler.jpg" class="pbillede" />
-            }
-        }
 
+        </div>
+        <div class="bilbillede">
+            <h2 class="Overskrift">@Html.DisplayFor(model => model.Mærke) </h2><h4 class="Overskrift">@Html.DisplayFor(model => model.Model)</h4>
+        </div>
+        <hr />
+
+        <h3 style="text-align: center;">Specifikationer</h3>
+        <dl class="dl-horizontal">
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Årgang)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Årgang)
+            </dd>
+
+            <dt class="grå">
+                @Html.DisplayNameFor(model => model.Nypris)
+            </dt>
+
+            <dd class="grå">
+                @Html.DisplayFor(model => model.Nypris)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Gearkasse)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Gearkasse)
+            </dd>
+
+            <dt class="grå">
+                @Html.DisplayNameFor(model => model.Træk)
+            </dt>
+
+            <dd class="grå">
+                @Html.DisplayFor(model => model.Træk)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Lastevne)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Lastevne)
+            </dd>
+
+            <dt class="grå">
+                @Html.DisplayNameFor(model => model.Vægt)
+            </dt>
+
+            <dd class="grå">
+                @Html.DisplayFor(model => model.Vægt)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Acceleration)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Acceleration)
+            </dd>
+
+            <dt class="grå">
+                @Html.DisplayNameFor(model => model.Hestekræfter)
+            </dt>
+
+            <dd class="grå">
+                @Html.DisplayFor(model => model.Hestekræfter)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Newtonmeter)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Newtonmeter)
+            </dd>
+
+            <dt class="grå">
+                @Html.DisplayNameFor(model => model.Motor)
+            </dt>
+
+            <dd class="grå">
+                @Html.DisplayFor(model => model.Motor)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Drivmiddel)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Drivmiddel)
+            </dd>
+
+            <dt class="grå">
+                @Html.DisplayNameFor(model => model.Kubik)
+            </dt>
+
+            <dd class="grå">
+                @Html.DisplayFor(model => model.Kubik)
+            </dd>
+
+        </dl>
+
+    <div class="knapper">
+        @Html.ActionLink("Tilbage", "Biler", "home", htmlAttributes: new { @class = "bn3637 bn36" })
+        @Html.ActionLink("Rediger", "RedigerBil", new { id = Model.Bil_ID }, htmlAttributes: new { @class = "bn3637 bn36" })
     </div>
-    <h2 class="Overskrift">@Html.DisplayFor(model => model.Mærke) </h2><h4 class="Overskrift">@Html.DisplayFor(model => model.Model)</h4>
-    <hr />
-    
-    <dl class="dl-horizontal">
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Årgang)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Årgang)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Nypris)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Nypris)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Gearkasse)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Gearkasse)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Træk)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Træk)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Lastevne)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Lastevne)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Vægt)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Vægt)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Acceleration)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Acceleration)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Hestekræfter)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Hestekræfter)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Newtonmeter)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Newtonmeter)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Motor)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Motor)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Drivmiddel)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Drivmiddel)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Kubik)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Kubik)
-        </dd>
-
-    </dl>
-</div>
-
-<div class="knapper">
-    @Html.ActionLink("Tilbage", "Biler", "home", htmlAttributes: new { @class = "bn3637 bn36" })
-    @Html.ActionLink("Rediger", "RedigerBil", new { id = Model.Bil_ID }, htmlAttributes: new { @class = "bn3637 bn36" })
-</div>
 </div>
 
 <style>
-    .Overskrift{
-        display:inline;
+    .Overskrift {
+        color: black;
+        display: inline;
     }
     img{
-        width: 20%;
-        height: 20%;
+        width: 100%;
+        height: 100%;
     }
-    
+
+    .grå{
+        background-color: lightgray;
+    }
+
+    .bilbillede {
+        /*
+        display: inline-block;
+        margin: 5px;
+        padding: 5px;
+        text-align: center;
+        border-radius: 15px;
+        width: 48%;
+        background-color: #fff;
+        border: 2px solid black;
+            */
+        width: 300px;
+        height: 100px;
+        border: 1px solid blue;
+        box-sizing: border-box;
+        display: inline-block;
+    }
+
+
 </style>
