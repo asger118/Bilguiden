@@ -28,10 +28,10 @@
             </div>
             <form>
                 @using (Html.BeginForm("test", "Home", FormMethod.Get)) {
-                @Html.DropDownList("option", new SelectList(Enum.GetValues(typeof(Dropdown))), "Vælg type")
-                @Html.TextBox("search", null, new { @placeholder = "Søg på bil", @class = "search-data" })
-                <button type="submit" value="Search" name="submit" class="fas fa-search"></button>
-            }
+                    @Html.DropDownList("option", new SelectList(Enum.GetValues(typeof(Dropdown))), "Vælg type")
+                    @Html.TextBox("search", null, new { @placeholder = "Søg på bil", @class = "search-data" })
+                    <button type="submit" value="Search" name="submit" class="fas fa-search"></button>
+                }
             </form>
 
             <a href="~/Account/Login"><img style="width: 40px; height: auto;" src="~/Images/Bruger.png" class="bruger" /></a>
@@ -77,6 +77,7 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </body>
 </html>
 

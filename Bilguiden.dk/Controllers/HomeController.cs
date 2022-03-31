@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -23,7 +24,20 @@ namespace Bilguiden.dk.Controllers {
             return View(Bil);
         }
 
-        
+        public ActionResult Sammenlign() {
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Sammenlign(JsonResult biler) {
+
+            Debug.WriteLine(biler);
+
+            Debug.WriteLine(biler.ToString());
+
+            return Json(biler);
+        }
 
         //Rediger deltajer om bil
         public ActionResult RedigerBil(int? id) {
