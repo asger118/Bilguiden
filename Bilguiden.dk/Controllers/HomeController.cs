@@ -38,12 +38,18 @@ namespace Bilguiden.dk.Controllers {
         public ActionResult Sammenlign(int [] Biler) {
 
             List<Biler> cars = new List<Biler>();
-            for (int i = 0; i < Biler.Length; i++) {
-                var y = Biler[i];
-                cars.Add(db.Biler.FirstOrDefault(x => x.Bil_ID == y));
-                Debug.WriteLine(cars);
+
+            if (Biler == null) { 
+                Console.WriteLine("Ingen biler valgt");
+                return Json(cars);
+            }else {
+                for (int i = 0; i < Biler.Length; i++) {
+                    var y = Biler[i];
+                    cars.Add(db.Biler.FirstOrDefault(x => x.Bil_ID == y));
+                    Debug.WriteLine(cars);
+                }
+                return View(cars);
             }
-            return View(cars);
         }
         
 
