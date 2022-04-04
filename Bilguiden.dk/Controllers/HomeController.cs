@@ -9,6 +9,7 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Web.Helpers;
+using System.Collections;
 
 namespace Bilguiden.dk.Controllers {
     public class HomeController : Controller {
@@ -27,20 +28,22 @@ namespace Bilguiden.dk.Controllers {
             return View(Bil);
         }
 
-        public ActionResult Sammenlign() {
-            
-            return View();
-        }
         
+        public ActionResult Sammenlign(List<Biler>cars) {
+            
+          return View(cars);
+        }
+
         [HttpPost]
         public ActionResult Sammenlign(int [] Biler) {
-            List<Biler> johnni = new List<Biler>();
+
+            List<Biler> cars = new List<Biler>();
             for (int i = 0; i < Biler.Length; i++) {
                 var y = Biler[i];
-                johnni.Add(db.Biler.FirstOrDefault(x => x.Bil_ID == y));
-                Debug.WriteLine(johnni);
+                cars.Add(db.Biler.FirstOrDefault(x => x.Bil_ID == y));
+                Debug.WriteLine(cars);
             }
-            return Json(johnni);
+            return View(cars);
         }
         
 
@@ -101,17 +104,6 @@ namespace Bilguiden.dk.Controllers {
         } 
 
 
-        public ActionResult About() {
-                ViewBag.Message = "Your application description page.";
-
-                return View();
-            }
-
-        public ActionResult Contact() {
-                ViewBag.Message = "Your contact page.";
-
-                return View();
-        }
         //the first parameter is the option that we choose and the second parameter will use the textbox value  
         public ActionResult Biler(string option, string search) {
 
@@ -130,7 +122,20 @@ namespace Bilguiden.dk.Controllers {
                 return View(db.Biler.Where(x => x.Mærke.StartsWith(search) || search == null).ToList());
             }
         }
-        
+
+
+
+        public ActionResult About() {
+            ViewBag.Message = "Your application description page.";
+
+            return View();
+        }
+
+        public ActionResult Contact() {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
     }
    }
     
