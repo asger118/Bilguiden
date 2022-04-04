@@ -33,14 +33,16 @@
 
         <!--Knapper-->
         <div>
-            <button onclick="GetBil_ID(@item.Bil_ID)" class="bn3637 bn36 knap">Sammenlign</button>
+            <button onclick="GetBil_ID(@item.Bil_ID)" class="bn3637 bn36 knap" id="ID">Sammenlign</button>
             @Html.ActionLink("Detaljer", "Bildetaljer", new { Bil_ID = item.Bil_ID }, htmlAttributes: new { @class = "bn3637 bn36" })
         </div>
     </div>
+
 }
+
 <br />
 @Html.ActionLink("Tilføj Bil", "TilføjBil", "home", htmlAttributes: new { @class = "bn3637 bn36" })
-<button href="~/Views/Home/Sammenlign.cshtml" onclick="SendData()" class="bn3637 bn36 knap">Sammenlign</button>
+<button onclick="SendData()" class="bn3637 bn36 knap">Sammenlign</button>
 <button onclick="FjernBil_ID()" class="bn3637 bn36 knap">Fjern sammenligning</button>
 <style>
 

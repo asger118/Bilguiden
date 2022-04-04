@@ -1,11 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Bilguiden.dk.Models;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 
 namespace Bilguiden.dk.Controllers {
     public class HomeController : Controller {
@@ -24,20 +25,15 @@ namespace Bilguiden.dk.Controllers {
             return View(Bil);
         }
 
-        public ActionResult Sammenlign() {
-
-            return View();
-        }
-
         [HttpPost]
-        public ActionResult Sammenlign(JsonResult biler) {
+        public ActionResult Sammenlign(int[] Biler) {
 
-            Debug.WriteLine(biler);
+            int bil1 = Biler.Min();
+            int bil2 = Biler.Max();
 
-            Debug.WriteLine(biler.ToString());
-
-            return Json(biler);
+            return View(db.Biler.Where(x => x.Bil_ID == bil1).ToList());
         }
+        
 
         //Rediger deltajer om bil
         public ActionResult RedigerBil(int? id) {
