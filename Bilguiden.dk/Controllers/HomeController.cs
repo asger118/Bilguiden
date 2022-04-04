@@ -32,9 +32,9 @@ namespace Bilguiden.dk.Controllers {
         [HttpPost]
         public ActionResult Sammenlign(JsonResult biler) {
 
-            Debug.WriteLine(biler);
+            Debug.WriteLine(biler.Data);
 
-            Debug.WriteLine(biler.ToString());
+            
 
             return Json(biler);
         }
