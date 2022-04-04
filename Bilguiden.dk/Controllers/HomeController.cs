@@ -7,6 +7,8 @@ using System.Web.Mvc;
 using Bilguiden.dk.Models;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.Web.Helpers;
 
 namespace Bilguiden.dk.Controllers {
     public class HomeController : Controller {
@@ -25,13 +27,20 @@ namespace Bilguiden.dk.Controllers {
             return View(Bil);
         }
 
+        public ActionResult Sammenlign() {
+            
+            return View();
+        }
+        
         [HttpPost]
-        public ActionResult Sammenlign(int[] Biler) {
-
-            int bil1 = Biler.Min();
-            int bil2 = Biler.Max();
-
-            return View(db.Biler.Where(x => x.Bil_ID == bil1).ToList());
+        public ActionResult Sammenlign(int [] Biler) {
+            List<Biler> johnni = new List<Biler>();
+            for (int i = 0; i < Biler.Length; i++) {
+                var y = Biler[i];
+                johnni.Add(db.Biler.FirstOrDefault(x => x.Bil_ID == y));
+                Debug.WriteLine(johnni);
+            }
+            return Json(johnni);
         }
         
 

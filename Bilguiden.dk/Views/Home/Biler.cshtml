@@ -5,38 +5,38 @@
 }
 <!--For hver item/bil i databasen laver den dette-->
 @foreach (var item in Model) {
-    <div class="pprodukter">
-
-        <!--Billede af bil-->
-        <div>
-            @{
-                if (item.Billede != null) {
-                    var base64 = Convert.ToBase64String(item.Billede);
-                    var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
-                    <img src="@imgsrc" class="pbillede" />
-                }
-                else {
-                    <img src="~/Images/Billede-mangler.jpg" class="pbillede" />
-                }
+<div class="pprodukter">
+    
+    <!--Billede af bil-->
+    <div>
+        @{
+            if (item.Billede != null) {
+                var base64 = Convert.ToBase64String(item.Billede);
+                var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
+                <img src="@imgsrc" class="pbillede" />
             }
-        </div>
-
-        <!--Bil model-->
-        <div style="text-align: center;">
-            <h2 class="overskrift">@item.Mærke </h2> <h4 class="overskrift">@item.Model</h4>
-        </div>
-
-        <!--Bil årgang-->
-        <div style="text-align: center">
-            <p>@item.Årgang</p>
-        </div>
-
-        <!--Knapper-->
-        <div>
-            <button onclick="GetBil_ID(@item.Bil_ID)" class="bn3637 bn36 knap" id="ID">Sammenlign</button>
-            @Html.ActionLink("Detaljer", "Bildetaljer", new { Bil_ID = item.Bil_ID }, htmlAttributes: new { @class = "bn3637 bn36" })
-        </div>
+            else {
+                <img src="~/Images/Billede-mangler.jpg" class="pbillede" />
+            }
+        }
     </div>
+
+    <!--Bil model-->
+    <div style="text-align: center;">
+        <h2 class="overskrift">@item.Mærke </h2> <h4 class="overskrift">@item.Model</h4>
+    </div>
+
+    <!--Bil årgang-->
+    <div style="text-align: center">
+        <p>@item.Årgang</p>
+    </div>
+
+    <!--Knapper-->
+    <div>
+        <button onclick="GetBil_ID(@item.Bil_ID)" class="bn3637 bn36 knap" id="ID">Sammenlign</button>
+        @Html.ActionLink("Detaljer", "Bildetaljer", new { Bil_ID = item.Bil_ID }, htmlAttributes: new { @class = "bn3637 bn36" })
+    </div>
+</div>
 
 }
 

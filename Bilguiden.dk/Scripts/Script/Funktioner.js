@@ -31,9 +31,7 @@ function SendData() {
         dataType: "json",
         traditional: true,
         data: { Biler },
-        success: function (data) {
-            console.log(data.message);
-        },
+        success: function (data) { console.log(data); },
     });
 }
 
