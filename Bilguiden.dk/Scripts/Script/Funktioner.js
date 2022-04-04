@@ -1,5 +1,5 @@
 ﻿
-Biler = [];
+let Biler = [];
 
 function GetBil_ID(Bil_ID) {
 
@@ -17,25 +17,26 @@ function GetBil_ID(Bil_ID) {
 }
 
 function FjernBil_ID() {
-
     if (Biler.length > 0) {
-
         Biler.length = 0;
         console.log(Biler);
     }
 }
 //URL: hvor dataen skal hen/endpoint
-//
 function SendData() {
-    let bo = JSON.parse(JSON.stringify(Biler));
-    console.log(bo);
 
-$.ajax({
-    url: "/Home/Sammenlign",
-    type: "POST",
-    data: bo,
-    success: function (result) { console.log("ID'er" + result) },
-    error: function (error) {console.log(error)},
-
-})
+    $.ajax({
+        type: "POST",
+        url: "/Home/Sammenlign",
+        dataType: "json",
+        traditional: true,
+        data: { Biler },
+        success: function (data) {
+            console.log(data.message);
+        },
+    });
 }
+
+
+
+
