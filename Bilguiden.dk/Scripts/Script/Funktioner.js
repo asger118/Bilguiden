@@ -24,6 +24,7 @@ function FjernBil_ID() {
 }
 //URL: hvor dataen skal hen/endpoint
 function SendData() {
+
     $.ajax({
         type: "POST",
         url: "/Home/Sammenlign",
@@ -31,9 +32,6 @@ function SendData() {
         traditional: true,
         data: { Biler },
         success: function (data) { console.log(data); },
-        error: function (data) {
-            console.log('Failed to get data' + data);
-        }
     });
 }
 
