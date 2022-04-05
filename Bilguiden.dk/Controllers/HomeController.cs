@@ -13,9 +13,10 @@ using System.Collections;
 
 namespace Bilguiden.dk.Controllers {
     public class HomeController : Controller {
-       
-        bilguidenDBEntities db = new bilguidenDBEntities();
-        
+            bilguidenDBEntities db = new bilguidenDBEntities();
+
+
+
         public ActionResult Index() {
             return View();
         }
@@ -23,34 +24,44 @@ namespace Bilguiden.dk.Controllers {
 
         //Detaljer om bil
         public ActionResult Bildetaljer(int? Bil_ID) {
-            
+           
             Biler Bil = db.Biler.Find(Bil_ID);
             return View(Bil);
         }
 
         
-        public ActionResult Sammenlign(List<Biler>cars) {
-            
-          return View(cars);
-        }
-
-        [HttpPost]
-        public ActionResult Sammenlign(int [] Biler) {
+        public ActionResult Sammenlign(int Bil_ID1, int Bil_ID2, int Bil_ID3) {
 
             List<Biler> cars = new List<Biler>();
-
-            if (Biler == null) { 
-                Console.WriteLine("Ingen biler valgt");
-                return Json(cars);
-            }else {
-                for (int i = 0; i < Biler.Length; i++) {
-                    var y = Biler[i];
-                    cars.Add(db.Biler.FirstOrDefault(x => x.Bil_ID == y));
-                    Debug.WriteLine(cars);
-                }
-                return View(cars);
-            }
+            cars.Add(db.Biler.First(x => x.Bil_ID == Bil_ID1));
+            cars.Add(db.Biler.First(x => x.Bil_ID == Bil_ID2));
+            return View(cars);
         }
+
+        //public ActionResult SendData(int Bil_ID1, int Bil_ID2, int Bil_ID3) {
+
+        //    var cars = db.Biler.Where(x => x.Bil_ID == Bil_ID1).ToList();
+            
+        //    return View("Sammenlign", cars);
+        //}
+
+        //[HttpPost]
+        //public ActionResult Sammenlign(int [] Biler) {
+
+        //    List<Biler> cars = new List<Biler>();
+
+        //    if (Biler == null) { 
+        //        Console.WriteLine("Ingen biler valgt");
+        //        return Json(cars);
+        //    }else {
+        //        for (int i = 0; i < Biler.Length; i++) {
+        //            var y = Biler[i];
+        //            cars.Add(db.Biler.FirstOrDefault(x => x.Bil_ID == y));
+        //            Debug.WriteLine(cars);
+        //        }
+        //        return PartialView("Sammenlign", cars );
+        //    }
+        //}
         
 
         //Rediger deltajer om bil

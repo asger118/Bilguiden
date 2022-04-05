@@ -1,104 +1,103 @@
-﻿@model List<Bilguiden.dk.Models.Biler>
-
+﻿@model IEnumerable<Bilguiden.dk.Models.Biler>
 
 <table class="table">
     <tr>
         <th>
-            @*@Html.DisplayNameFor(model => model.Mærke)*@
+            @Html.DisplayNameFor(model => model.Mærke)
         </th>
         <th>
-            @*@Html.DisplayNameFor(model => model.Model)*@
+            @Html.DisplayNameFor(model => model.Model)
         </th>
         <th>
-            @*@Html.DisplayNameFor(model => model.Årgang)*@
+            @Html.DisplayNameFor(model => model.Årgang)
         </th>
         <th>
-            @*@Html.DisplayNameFor(model => model.Nypris)*@
+            @Html.DisplayNameFor(model => model.Nypris)
         </th>
         <th>
-            @*@Html.DisplayNameFor(model => model.Gearkasse)*@
+            @Html.DisplayNameFor(model => model.Gearkasse)
         </th>
         <th>
-            @*@Html.DisplayNameFor(model => model.Træk)*@
+            @Html.DisplayNameFor(model => model.Træk)*
         </th>
         <th>
-            @*@Html.DisplayNameFor(model => model.Lastevne)*@
+            @Html.DisplayNameFor(model => model.Lastevne)
         </th>
         <th>
-            @*@Html.DisplayNameFor(model => model.Vægt)*@
+            @Html.DisplayNameFor(model => model.Vægt)
         </th>
         <th>
-            @*@Html.DisplayNameFor(model => model.Acceleration)*@
+            @Html.DisplayNameFor(model => model.Acceleration)
         </th>
         <th>
-            @*@Html.DisplayNameFor(model => model.Hestekræfter)*@
+            @Html.DisplayNameFor(model => model.Hestekræfter)
         </th>
         <th>
-            @*@Html.DisplayNameFor(model => model.Newtonmeter)*@
+            @Html.DisplayNameFor(model => model.Newtonmeter)
         </th>
         <th>
-            @*@Html.DisplayNameFor(model => model.Motor)*@
+            @Html.DisplayNameFor(model => model.Motor)
         </th>
         <th>
-            @*@Html.DisplayNameFor(model => model.Drivmiddel)*@
+            @Html.DisplayNameFor(model => model.Drivmiddel)
         </th>
         <th>
-            @*@Html.DisplayNameFor(model => model.Kubik)*@
+            @Html.DisplayNameFor(model => model.Kubik)
         </th>
         <th>
-            @*@Html.DisplayNameFor(model => model.Billede)*@
+            @Html.DisplayNameFor(model => model.Billede)
         </th>
         <th></th>
     </tr>
 
     @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Mærke)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Model)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Årgang)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nypris)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Gearkasse)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Træk)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Lastevne)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Vægt)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Acceleration)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Hestekræfter)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Newtonmeter)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Motor)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Drivmiddel)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Kubik)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Billede)
-            </td>
-        </tr>
-    }
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mærke)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Model)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Årgang)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nypris)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gearkasse)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Træk)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Lastevne)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Vægt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Acceleration)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Hestekræfter)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Newtonmeter)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Motor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Drivmiddel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Kubik)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Billede)
+                </td>
+            </tr>
+        }
 
 </table>

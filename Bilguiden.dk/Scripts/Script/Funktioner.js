@@ -24,17 +24,24 @@ function FjernBil_ID() {
 }
 //URL: hvor dataen skal hen/endpoint
 function SendData() {
-    $.ajax({
-        type: "POST",
-        url: "/Home/Sammenlign",
-        dataType: "json",
-        traditional: true,
-        data: { Biler },
-        success: function (data) { console.log(data); },
-        error: function (data) {
-            console.log('Failed to get data' + data);
-        }
-    });
+
+    window.location.href = "/Home/Sammenlign/" + Biler[0] + "/" + Biler[1]+ "/" + Biler[2];
+
+    //$.ajax({
+    //    type: "POST",
+    //    url: "/Home/Sammenlign",
+    //    dataType: "json",
+    //    traditional: true,
+    //    data: { Biler },
+    //    success: function (data) {
+    //        console.log(data);
+            
+    //    },
+    //    error: function (data) {
+    //        console.log('Failed to get data' + data);
+
+    //    }
+    //});
 }
 
 
