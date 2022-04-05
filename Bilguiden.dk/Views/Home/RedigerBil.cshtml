@@ -2,12 +2,13 @@
 @using Bilguiden.dk.Models
 
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm("RedigerBil", "Home", FormMethod.Post, new { enctype="multipart/form-data"})) {
     @Html.AntiForgeryToken()
 
 <div class="indhold">
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @Html.HiddenFor(model => model.Bil_ID)
+
 
     <div class="grid--50-50">
         <!--Data mærke-->

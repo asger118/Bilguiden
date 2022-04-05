@@ -51,66 +51,67 @@
     </tr>
 
     @foreach (var item in Model) {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Mærke)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Model)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Årgang)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Nypris)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Gearkasse)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Træk)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Lastevne)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Vægt)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Acceleration)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Hestekræfter)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Newtonmeter)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Motor)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Drivmiddel)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Kubik)
-                </td>
-                <td>
-                    <div class="bilbillede">
-                        @{
-                            if (item.Billede != null) {
-                                byte[] billede = item.Billede;
-                                var base64 = Convert.ToBase64String(billede);
-                                var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
-                                <img src="@imgsrc" class="pbilleded" />
-                            }
-                            else {
-                                <img src="~/Images/Billede-mangler.jpg" class="pbilleded" />
-                            }
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mærke)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Årgang)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nypris)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gearkasse)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Træk)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lastevne)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vægt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Acceleration)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hestekræfter)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Newtonmeter)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Motor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Drivmiddel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Kubik)
+            </td>
+            <td>
+                <div class="bilbillede">
+                    @{
+                        if (item.Billede != null) {
+                            byte[] billede = item.Billede;
+                            var base64 = Convert.ToBase64String(billede);
+                            var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
+                            <img src="@imgsrc" class="pbilleded" />
                         }
-
-                    </div>
-                </td>
-            </tr>
-        }
+                        else {
+                            <img src="~/Images/Billede-mangler.jpg" class="pbilleded" />
+                        }
+                    }
+                </div>
+            </td>
+        </tr>
+    }
 
 </table>
+
+@Html.ActionLink("Tilbage", "Biler", "home", htmlAttributes: new { @class = "bn3637 bn36" })

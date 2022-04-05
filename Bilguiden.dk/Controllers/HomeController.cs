@@ -27,12 +27,12 @@ namespace Bilguiden.dk.Controllers {
         }
         
         //Side med biler man sammenligner
-        public ActionResult Sammenlign(int Bil_ID1, int Bil_ID2, int Bil_ID3) {
+        public ActionResult Sammenlign(int Bil_ID1, int Bil_ID2, int? Bil_ID3) {
             //Laver en ny liste af biler og tilføjer de biler man har valgt ud fra deres ID
             List<Biler> cars = new List<Biler>();
             cars.Add(db.Biler.First(x => x.Bil_ID == Bil_ID1));
             cars.Add(db.Biler.First(x => x.Bil_ID == Bil_ID2));
-            cars.Add(db.Biler.First(x => x.Bil_ID == Bil_ID3));
+            if( Bil_ID3 != null) { cars.Add(db.Biler.First(x => x.Bil_ID == Bil_ID3)); }
             //Returner viewet med Listen af udvalgte biler
             return View(cars);
         }
@@ -47,10 +47,33 @@ namespace Bilguiden.dk.Controllers {
 
         //Rediger detaljer om bil
         [HttpPost]
-        public ActionResult RedigerBil(Biler bil) {
+        public ActionResult RedigerBil(Biler bil, HttpPostedFileBase image1) {
 
-                db.Entry(bil).State = EntityState.Modified;
+            db.Entry(bil).State = EntityState.Modified;
+            
+            if (image1 != null) {
+                bil.Billede = new byte[image1.ContentLength];
+                image1.InputStream.Read(bil.Billede, 0, image1.ContentLength);
+            }
+
+            
+            try {
                 db.SaveChanges();
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException dbEx) {
+                Exception raise = dbEx;
+                foreach (var validationErrors in dbEx.EntityValidationErrors) {
+                    foreach (var validationError in validationErrors.ValidationErrors) {
+                        string message = string.Format("{0}:{1}",
+                            validationErrors.Entry.Entity.ToString(),
+                            validationError.ErrorMessage);
+                        // raise a new exception nesting
+                        // the current instance as InnerException
+                        raise = new InvalidOperationException(message, raise);
+                    }
+                    throw raise;
+                }
+            }
 
             ViewBag.SavedData = true;
             return View(bil);
@@ -66,7 +89,7 @@ namespace Bilguiden.dk.Controllers {
         [HttpPost]
         public ActionResult TilføjBil(Biler NyBil, HttpPostedFileBase image1) {
 
-            if (image1 != null) {   // hvis den ikke er lig med null
+            if (image1 != null) { 
                 NyBil.Billede = new byte[image1.ContentLength];
                 image1.InputStream.Read(NyBil.Billede, 0, image1.ContentLength);
             }
