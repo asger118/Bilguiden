@@ -8,7 +8,6 @@
 <!--For hver item/bil i databasen laver den dette-->
 @foreach (var item in Model) {
     <div class="pprodukter">
-
         <!--Billede af bil-->
         <div>
             @{
@@ -22,33 +21,25 @@
                 }
             }
         </div>
-
         <!--Bil model-->
         <div style="text-align: center;">
             <h2 class="overskrift">@item.Mærke </h2> <h4 class="overskrift">@item.Model</h4>
         </div>
-
         <!--Bil årgang-->
         <div style="text-align: center">
             <p>@item.Årgang</p>
         </div>
-
         <!--Knapper-->
         <div>
-            @*<button onclick="GetBil_ID(@item.Bil_ID)" class="bn3637 bn36 knap" id="ID">Sammenlign</button>*@
-            <button onclick="@{cars.Add(item.Bil_ID); Console.WriteLine(cars);}" class="bn3637 bn36 knap">Sammenlign</button>
-            @*@Html.ActionLink("Sammenlign","SendData", "home", new { Bil_ID = item.Bil_ID }, htmlAttributes: new { @class = "bn3637 bn36" })*@
+            <button onclick="GetBil_ID(@item.Bil_ID)" class="bn3637 bn36 knap">Sammenlign</button>
             @Html.ActionLink("Detaljer", "Bildetaljer", new { Bil_ID = item.Bil_ID }, htmlAttributes: new { @class = "bn3637 bn36" })
         </div>
     </div>
 }
-@{int[] carArray = cars.ToArray();
-    Console.WriteLine(carArray);}
+
 <br />
 @Html.ActionLink("Tilføj Bil", "TilføjBil", "home", htmlAttributes: new { @class = "bn3637 bn36" })
-@*@Html.ActionLink("Sammenlign", "Sammenlign", "home", htmlAttributes: new { @class = "bn3637 bn36", @onclick = "SendData()"})*@
-@Html.ActionLink("Sammenlign", "Sammenlign", new { carArray }, htmlAttributes: new { @class = "bn3637 bn36" })
-@*<input type="button" value="Sammenlign" onclick="SendData()" class="bn3637 bn36 knap" />*@
+<button onclick="SendData()" class="bn3637 bn36 knap">Sammenlign</button>
 <button onclick="FjernBil_ID()" class="bn3637 bn36 knap">Fjern sammenligning</button>
 
 <style>

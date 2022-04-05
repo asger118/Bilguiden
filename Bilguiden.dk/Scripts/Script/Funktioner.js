@@ -25,7 +25,7 @@ function FjernBil_ID() {
 //URL: hvor dataen skal hen/endpoint
 function SendData() {
 
-    window.location.href = "/Home/Sammenlign/" + Biler[0] + "/" + Biler[1]+ "/" + Biler[2];
+    window.location.href = "/Home/Sammenlign?Bil_ID1=" + Biler[0] + "&Bil_ID2=" + Biler[1]+ "&Bil_ID3=" + Biler[2];
 
     //$.ajax({
     //    type: "POST",

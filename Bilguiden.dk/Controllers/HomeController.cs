@@ -15,11 +15,7 @@ namespace Bilguiden.dk.Controllers {
     public class HomeController : Controller {
             bilguidenDBEntities db = new bilguidenDBEntities();
 
-
-
-        public ActionResult Index() {
-            return View();
-        }
+        public ActionResult Index() { return View(); }
 
 
         //Detaljer om bil
@@ -28,13 +24,13 @@ namespace Bilguiden.dk.Controllers {
             Biler Bil = db.Biler.Find(Bil_ID);
             return View(Bil);
         }
-
         
         public ActionResult Sammenlign(int Bil_ID1, int Bil_ID2, int Bil_ID3) {
 
             List<Biler> cars = new List<Biler>();
             cars.Add(db.Biler.First(x => x.Bil_ID == Bil_ID1));
             cars.Add(db.Biler.First(x => x.Bil_ID == Bil_ID2));
+            cars.Add(db.Biler.First(x => x.Bil_ID == Bil_ID3));
             return View(cars);
         }
 
@@ -139,8 +135,6 @@ namespace Bilguiden.dk.Controllers {
                 return View(db.Biler.Where(x => x.Mærke.StartsWith(search) || search == null).ToList());
             }
         }
-
-
 
         public ActionResult About() {
             ViewBag.Message = "Your application description page.";
