@@ -1,0 +1,70 @@
+﻿.Login-container {
+    margin: 0;
+    position: page;
+    padding-top: 5em;
+    left: 50%;
+    font-family: 'Poppins';
+    position: relative;
+}
+
+.Login-container a{
+    color: black;
+}
+
+.Login-overskrift {
+    text-align: center;
+    margin: 0;
+    position: page;
+}
+
+.Login-form{
+}
+
+.Login-email {
+    
+}
+
+.email {
+    
+}
+
+.Login-password{
+
+}
+
+.Login-valg{
+  
+}
+
+.Login-remember {
+    display: inline-block;
+}
+
+.Login-forget {
+    display: inline-block;
+    
+}
+
+.Login-login {
+    margin: 0;
+}
+
+.Login-knap {
+    width: 5em;
+    height: 3em;
+    text-align: center;
+    width: 10em;
+    border-radius: 40px;
+    background: #2f2f2f;
+    outline: none;
+    border: none;
+    box-shadow: 0 6px 20px -5px rgba(0,0,0,0.4);
+    overflow: hidden;
+    cursor: pointer;
+    color: #fff;
+    
+}
+
+.Login-new{
+    text-align:center;
+}

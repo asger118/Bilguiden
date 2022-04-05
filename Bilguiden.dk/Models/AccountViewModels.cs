@@ -55,10 +55,10 @@ namespace Bilguiden.dk.Models
 
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Adgangskode")]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me?")]
+        [Display(Name = "Husk mig?")]
         public bool RememberMe { get; set; }
     }
 
