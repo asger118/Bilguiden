@@ -4,129 +4,127 @@
     ViewBag.Title = "Bildetaljer";
 }
 <div class="indhold">
-        <div class="bilbillede">
-            @{
-                if (Model.Billede != null)
-                {
-                    byte[] billede = Model.Billede;
-                    var base64 = Convert.ToBase64String(billede);
-                    var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
-                    <img src="@imgsrc" class="pbilleded" />
-                }
-                else
-                {
-                    <img src="~/Images/Billede-mangler.jpg" class="pbilleded" />
-                }
+    <div class="bilbillede">
+        @{
+            if (Model.Billede != null) {
+                byte[] billede = Model.Billede;
+                var base64 = Convert.ToBase64String(billede);
+                var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
+                <img src="@imgsrc" class="pbilleded" />
             }
+            else {
+                <img src="~/Images/Billede-mangler.jpg" class="pbilleded" />
+            }
+        }
 
-        </div>
+    </div>
 
-        <div class="bilbillede">
-            <h2 class="Overskrift">@Html.DisplayFor(model => model.Mærke) </h2><h4 class="Overskrift">@Html.DisplayFor(model => model.Model)</h4>   
-            <p>Dette er en beskrivelse af bilen, den har super gode køreenskaber. Bilen er udstyret med 5 døre. Lækkert udstyr så som LED forlygter, elsæder og meget mere</p>
-        </div>
-        <hr />
+    <div class="bilbillede">
+        <h2 class="Overskrift">@Html.DisplayFor(model => model.Mærke) </h2><h4 class="Overskrift">@Html.DisplayFor(model => model.Model)</h4>
+        <p>Dette er en beskrivelse af bilen, den har super gode køreenskaber. Bilen er udstyret med 5 døre. Lækkert udstyr så som LED forlygter, elsæder og meget mere</p>
+    </div>
+    <hr />
 
-        <h3 style="text-align: center;">Specifikationer</h3>
-        <dl class="dl-horizontal">
+    <h3 style="text-align: center;">Specifikationer</h3>
+    <dl class="dl-horizontal">
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Årgang)
-            </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.Årgang)
+        </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Årgang)
-            </dd>
+        <dd>
+            @Html.DisplayFor(model => model.Årgang)
+        </dd>
 
-            <dt class="grå">
-                @Html.DisplayNameFor(model => model.Nypris)
-            </dt>
+        <dt class="grå">
+            @Html.DisplayNameFor(model => model.Nypris)
+        </dt>
 
-            <dd class="grå">
-                @Html.DisplayFor(model => model.Nypris)
-            </dd>
+        <dd class="grå">
+            @Html.DisplayFor(model => model.Nypris)
+        </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Gearkasse)
-            </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.Gearkasse)
+        </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Gearkasse)
-            </dd>
+        <dd>
+            @Html.DisplayFor(model => model.Gearkasse)
+        </dd>
 
-            <dt class="grå">
-                @Html.DisplayNameFor(model => model.Træk)
-            </dt>
+        <dt class="grå">
+            @Html.DisplayNameFor(model => model.Træk)
+        </dt>
 
-            <dd class="grå">
-                @Html.DisplayFor(model => model.Træk)
-            </dd>
+        <dd class="grå">
+            @Html.DisplayFor(model => model.Træk)
+        </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Lastevne)
-            </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.Lastevne)
+        </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Lastevne)
-            </dd>
+        <dd>
+            @Html.DisplayFor(model => model.Lastevne)
+        </dd>
 
-            <dt class="grå">
-                @Html.DisplayNameFor(model => model.Vægt)
-            </dt>
+        <dt class="grå">
+            @Html.DisplayNameFor(model => model.Vægt)
+        </dt>
 
-            <dd class="grå">
-                @Html.DisplayFor(model => model.Vægt)
-            </dd>
+        <dd class="grå">
+            @Html.DisplayFor(model => model.Vægt)
+        </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Acceleration)
-            </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.Acceleration)
+        </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Acceleration)
-            </dd>
+        <dd>
+            @Html.DisplayFor(model => model.Acceleration)
+        </dd>
 
-            <dt class="grå">
-                @Html.DisplayNameFor(model => model.Hestekræfter)
-            </dt>
+        <dt class="grå">
+            @Html.DisplayNameFor(model => model.Hestekræfter)
+        </dt>
 
-            <dd class="grå">
-                @Html.DisplayFor(model => model.Hestekræfter)
-            </dd>
+        <dd class="grå">
+            @Html.DisplayFor(model => model.Hestekræfter)
+        </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Newtonmeter)
-            </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.Newtonmeter)
+        </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Newtonmeter)
-            </dd>
+        <dd>
+            @Html.DisplayFor(model => model.Newtonmeter)
+        </dd>
 
-            <dt class="grå">
-                @Html.DisplayNameFor(model => model.Motor)
-            </dt>
+        <dt class="grå">
+            @Html.DisplayNameFor(model => model.Motor)
+        </dt>
 
-            <dd class="grå">
-                @Html.DisplayFor(model => model.Motor)
-            </dd>
+        <dd class="grå">
+            @Html.DisplayFor(model => model.Motor)
+        </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Drivmiddel)
-            </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.Drivmiddel)
+        </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Drivmiddel)
-            </dd>
+        <dd>
+            @Html.DisplayFor(model => model.Drivmiddel)
+        </dd>
 
-            <dt class="grå">
-                @Html.DisplayNameFor(model => model.Kubik)
-            </dt>
+        <dt class="grå">
+            @Html.DisplayNameFor(model => model.Kubik)
+        </dt>
 
-            <dd class="grå">
-                @Html.DisplayFor(model => model.Kubik)
-            </dd>
+        <dd class="grå">
+            @Html.DisplayFor(model => model.Kubik)
+        </dd>
 
-        </dl>
+    </dl>
 
     <div class="knapper">
         @Html.ActionLink("Tilbage", "Biler", "home", htmlAttributes: new { @class = "bn3637 bn36" })
@@ -139,12 +137,13 @@
         color: black;
         display: inline;
     }
-    img{
+
+    img {
         width: 100%;
         height: 100%;
     }
 
-    .grå{
+    .grå {
         background-color: lightgray;
     }
 
@@ -165,12 +164,11 @@
         border: 2px solid black;
         vertical-align: top;
         height: 18em;
-        
         /*
         width: 300px;
         height: 100px;
         box-sizing: border-box;
-          */  
+          */
     }
 
     .bilbeskrivelse {
@@ -183,5 +181,4 @@
         background-color: #fff;
         border: 2px solid black;
     }
-
 </style>
