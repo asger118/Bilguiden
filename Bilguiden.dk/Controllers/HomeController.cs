@@ -13,8 +13,9 @@ using System.Collections;
 
 namespace Bilguiden.dk.Controllers {
     public class HomeController : Controller {
-            bilguidenDBEntities db = new bilguidenDBEntities();
+        bilguidenDBEntities db = new bilguidenDBEntities();
 
+        //Index side
         public ActionResult Index() { return View(); }
 
 
@@ -25,40 +26,17 @@ namespace Bilguiden.dk.Controllers {
             return View(Bil);
         }
         
+        //Side med biler man sammenligner
         public ActionResult Sammenlign(int Bil_ID1, int Bil_ID2, int Bil_ID3) {
-
+            //Laver en ny liste af biler og tilføjer de biler man har valgt ud fra deres ID
             List<Biler> cars = new List<Biler>();
             cars.Add(db.Biler.First(x => x.Bil_ID == Bil_ID1));
             cars.Add(db.Biler.First(x => x.Bil_ID == Bil_ID2));
             cars.Add(db.Biler.First(x => x.Bil_ID == Bil_ID3));
+            //Returner viewet med Listen af udvalgte biler
             return View(cars);
         }
 
-        //public ActionResult SendData(int Bil_ID1, int Bil_ID2, int Bil_ID3) {
-
-        //    var cars = db.Biler.Where(x => x.Bil_ID == Bil_ID1).ToList();
-            
-        //    return View("Sammenlign", cars);
-        //}
-
-        //[HttpPost]
-        //public ActionResult Sammenlign(int [] Biler) {
-
-        //    List<Biler> cars = new List<Biler>();
-
-        //    if (Biler == null) { 
-        //        Console.WriteLine("Ingen biler valgt");
-        //        return Json(cars);
-        //    }else {
-        //        for (int i = 0; i < Biler.Length; i++) {
-        //            var y = Biler[i];
-        //            cars.Add(db.Biler.FirstOrDefault(x => x.Bil_ID == y));
-        //            Debug.WriteLine(cars);
-        //        }
-        //        return PartialView("Sammenlign", cars );
-        //    }
-        //}
-        
 
         //Rediger deltajer om bil
         public ActionResult RedigerBil(int? id) {
@@ -116,13 +94,12 @@ namespace Bilguiden.dk.Controllers {
             return View(NyBil);
         } 
 
-
-        //the first parameter is the option that we choose and the second parameter will use the textbox value  
+        //Den første parameter er hvad man vil søge efter og anden parameter er hvad man søger
         public ActionResult Biler(string option, string search) {
 
-            //if a user choose the radio button option as Subject  
+            //Hvis man søger efter Drivmiddel  
             if (option == "Drivmiddel") {
-                //Index action method will return a view with a student records based on what a user specify the value in textbox  
+                //Finder Biler med det drivmiddel man søger efter
                 return View(db.Biler.Where(x => x.Drivmiddel == search || search == null).ToList());
             }
             else if (option == "Model") {

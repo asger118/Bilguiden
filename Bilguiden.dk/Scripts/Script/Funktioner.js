@@ -24,24 +24,8 @@ function FjernBil_ID() {
 }
 //URL: hvor dataen skal hen/endpoint
 function SendData() {
-
     window.location.href = "/Home/Sammenlign?Bil_ID1=" + Biler[0] + "&Bil_ID2=" + Biler[1]+ "&Bil_ID3=" + Biler[2];
 
-    //$.ajax({
-    //    type: "POST",
-    //    url: "/Home/Sammenlign",
-    //    dataType: "json",
-    //    traditional: true,
-    //    data: { Biler },
-    //    success: function (data) {
-    //        console.log(data);
-            
-    //    },
-    //    error: function (data) {
-    //        console.log('Failed to get data' + data);
-
-    //    }
-    //});
 }
 
 
