@@ -26,104 +26,58 @@
     <hr />
 
     <h3 style="text-align: center;">Specifikationer</h3>
+
     <dl class="dl-horizontal">
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Årgang)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Årgang)
-        </dd>
-
-        <dt class="grå">
-            @Html.DisplayNameFor(model => model.Nypris)
-        </dt>
-
-        <dd class="grå">
-            @Html.DisplayFor(model => model.Nypris)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Gearkasse)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Gearkasse)
-        </dd>
-
-        <dt class="grå">
-            @Html.DisplayNameFor(model => model.Træk)
-        </dt>
-
-        <dd class="grå">
-            @Html.DisplayFor(model => model.Træk)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Lastevne)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Lastevne)
-        </dd>
-
-        <dt class="grå">
-            @Html.DisplayNameFor(model => model.Vægt)
-        </dt>
-
-        <dd class="grå">
-            @Html.DisplayFor(model => model.Vægt)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Acceleration)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Acceleration)
-        </dd>
-
-        <dt class="grå">
-            @Html.DisplayNameFor(model => model.Hestekræfter)
-        </dt>
-
-        <dd class="grå">
-            @Html.DisplayFor(model => model.Hestekræfter)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Newtonmeter)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Newtonmeter)
-        </dd>
-
-        <dt class="grå">
-            @Html.DisplayNameFor(model => model.Motor)
-        </dt>
-
-        <dd class="grå">
-            @Html.DisplayFor(model => model.Motor)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Drivmiddel)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Drivmiddel)
-        </dd>
-
-        <dt class="grå">
-            @Html.DisplayNameFor(model => model.Kubik)
-        </dt>
-
-        <dd class="grå">
-            @Html.DisplayFor(model => model.Kubik)
-        </dd>
-
+        <table>
+            <tr>
+                <td class="tbkat">@Html.DisplayNameFor(model => model.Årgang)</td>
+                <td>@Html.DisplayFor(model => model.Årgang)</td>
+            </tr>
+            <tr>
+                <td class="tbkat">@Html.DisplayNameFor(model => model.Nypris)</td>
+                <td>@Html.DisplayFor(model => model.Nypris)</td>
+            </tr>
+            <tr>
+                <td class="tbkat">@Html.DisplayNameFor(model => model.Gearkasse)</td>
+                <td>@Html.DisplayFor(model => model.Gearkasse)</td>
+            </tr>
+            <tr>
+                <td class="tbkat">@Html.DisplayNameFor(model => model.Træk)</td>
+                <td>@Html.DisplayFor(model => model.Træk)</td>
+            </tr>
+            <tr>
+                <td class="tbkat">@Html.DisplayNameFor(model => model.Lastevne)</td>
+                <td>@Html.DisplayFor(model => model.Lastevne)</td>
+            </tr>
+            <tr>
+                <td class="tbkat">@Html.DisplayNameFor(model => model.Vægt)</td>
+                <td>@Html.DisplayFor(model => model.Vægt)</td>
+            </tr>
+            <tr>
+                <td class="tbkat">@Html.DisplayNameFor(model => model.Acceleration)</td>
+                <td>@Html.DisplayFor(model => model.Acceleration)</td>
+            </tr>
+            <tr>
+                <td class="tbkat">@Html.DisplayNameFor(model => model.Hestekræfter)</td>
+                <td>@Html.DisplayFor(model => model.Hestekræfter)</td>
+            </tr>
+            <tr>
+                <td class="tbkat">@Html.DisplayNameFor(model => model.Newtonmeter)</td>
+                <td>@Html.DisplayFor(model => model.Newtonmeter)</td>
+            </tr>
+            <tr>
+                <td class="tbkat">@Html.DisplayNameFor(model => model.Motor)</td>
+                <td>@Html.DisplayFor(model => model.Motor)</td>
+            </tr>
+            <tr>
+                <td class="tbkat">@Html.DisplayNameFor(model => model.Drivmiddel)</td>
+                <td>@Html.DisplayFor(model => model.Drivmiddel)</td>
+            </tr>
+            <tr>
+                <td class="tbkat">@Html.DisplayNameFor(model => model.Kubik)</td>
+                <td>@Html.DisplayFor(model => model.Kubik)</td>
+            </tr>
+        </table>
     </dl>
 
     <div class="knapper">
@@ -180,5 +134,31 @@
         width: 48%;
         background-color: #fff;
         border: 2px solid black;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        border: 1px solid #dddddd;
+    }
+
+    td, th {
+        text-align: left;
+        border-left: 1px solid #dddddd;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    tr:hover {
+        background-color: #dddd;
+    }
+
+    .tbkat{
+        font-weight: bold;
+        width: 30%;
+        border: none;
     }
 </style>
