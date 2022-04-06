@@ -1,117 +1,174 @@
 ﻿@model IEnumerable<Bilguiden.dk.Models.Biler>
 
-<table class="table">
+<h1 style="text-align: center;">Bilsammenligning</h1>
+
+@foreach (var item in Model)
+{
+    <div class="pprodukter">
+        @{
+            if (item.Billede != null)
+            {
+                byte[] billede = item.Billede;
+                var base64 = Convert.ToBase64String(billede);
+                var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
+                <img src="@imgsrc" class="pbilleded1" />
+            }
+            else
+            {
+                <img src="~/Images/Billede-mangler.jpg" class="pbilleded1" />
+            }
+        }
+
+        <div style="text-align: center;">
+            <h2 class="overskrift">@item.Mærke </h2> <h4 class="overskrift">@item.Model</h4>
+        </div>
+    </div>
+}
+<hr />
+
+<table>
+
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Mærke)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Model)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Årgang)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Nypris)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Gearkasse)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Træk)*
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Lastevne)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Vægt)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Acceleration)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Hestekræfter)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Newtonmeter)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Motor)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Drivmiddel)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Kubik)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Billede)
-        </th>
-        <th></th>
+        <th>@Html.DisplayNameFor(model => model.Årgang)</th>
+        @foreach (var item in Model)
+        {
+            <td>@Html.DisplayFor(modelItem => item.Årgang)</td>
+        }
     </tr>
-
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Mærke)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Model)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Årgang)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nypris)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Gearkasse)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Træk)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Lastevne)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Vægt)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Acceleration)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Hestekræfter)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Newtonmeter)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Motor)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Drivmiddel)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Kubik)
-            </td>
-            <td>
-                <div class="bilbillede">
-                    @{
-                        if (item.Billede != null) {
-                            byte[] billede = item.Billede;
-                            var base64 = Convert.ToBase64String(billede);
-                            var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
-                            <img src="@imgsrc" class="pbilleded" />
-                        }
-                        else {
-                            <img src="~/Images/Billede-mangler.jpg" class="pbilleded" />
-                        }
-                    }
-                </div>
-            </td>
-        </tr>
-    }
-
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Nypris)</th>
+        @foreach (var item in Model)
+        {
+    <td>@Html.DisplayFor(modelItem => item.Nypris)</td>
+        }
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Gearkasse)</th>
+        @foreach (var item in Model)
+        {
+            <td>@Html.DisplayFor(modelItem => item.Gearkasse)</td>
+        }
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Træk)</th>
+        @foreach (var item in Model)
+        {
+            <td>@Html.DisplayFor(modelItem => item.Træk)</td>
+        }
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Lastevne)</th>
+        @foreach (var item in Model)
+        {
+            <td>@Html.DisplayFor(modelItem => item.Lastevne)</td>
+        }
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Vægt)</th>
+        @foreach (var item in Model)
+        {
+            <td>@Html.DisplayFor(modelItem => item.Vægt)</td>
+        }
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Acceleration)</th>
+        @foreach (var item in Model)
+        {
+            <td>@Html.DisplayFor(modelItem => item.Acceleration)</td>
+        }
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Hestekræfter)</th>
+        @foreach (var item in Model)
+        {
+            <td>@Html.DisplayFor(modelItem => item.Hestekræfter)</td>
+        }
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Newtonmeter)</th>
+        @foreach (var item in Model)
+        {
+            <td>@Html.DisplayFor(modelItem => item.Newtonmeter)</td>
+        }
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Motor)</th>
+        @foreach (var item in Model)
+        {
+            <td>@Html.DisplayFor(modelItem => item.Motor)</td>
+        }
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Drivmiddel)</th>
+        @foreach (var item in Model)
+        {
+            <td>@Html.DisplayFor(modelItem => item.Drivmiddel)</td>
+        }
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Kubik)</th>
+        @foreach (var item in Model)
+        {
+            <td>@Html.DisplayFor(modelItem => item.Kubik)</td>
+        }
+    </tr>
 </table>
+<br />
 
 @Html.ActionLink("Tilbage", "Biler", "home", htmlAttributes: new { @class = "bn3637 bn36" })
+
+
+<style>
+    .pbilleded1 {
+        width: 100%;
+        height: 13em;
+        border-radius: 10px;
+        float: left;
+        display: block;
+    }
+
+    .pprodukter {
+        display: inline-block;
+        margin: 5px;
+        padding: 5px;
+        text-align: center;
+        border-radius: 15px;
+        width: 32%;
+        background-color: #fff;
+        border: 2px solid #dddd;
+        vertical-align: top;
+        height: 20em;
+    }
+
+    .overskrift{
+        color: black;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        border: 1px solid #dddddd;
+    }
+
+    td, th {
+        text-align: left;
+        border-left: 1px solid #dddddd;
+        padding: 8px;
+    }
+
+    td{
+        width: 25%
+    }
+
+    th{
+        width: 20%;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    tr:hover {
+        background-color: #dddd;
+    }
+</style>
