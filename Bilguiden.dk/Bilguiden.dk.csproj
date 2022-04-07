@@ -231,7 +231,9 @@
     <Content Include="Images\Billede-mangler.jpg" />
     <Content Include="Images\Bruger.png" />
     <Content Include="Images\dropdown.png" />
+    <Content Include="Images\insta.png" />
     <Content Include="Images\logobilnav.png" />
+    <Content Include="Images\SeekPng.com_daycare-png_8131540.png" />
     <Content Include="Models\bilguidenDBmodel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>bilguidenDBmodel.edmx</DependentUpon>

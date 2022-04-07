@@ -1,6 +1,9 @@
 ﻿@model IEnumerable<Bilguiden.dk.Models.Biler>
 
-<h1 style="text-align: center;">Bilsammenligning</h1>
+@{
+    ViewBag.Title = "Bilsammenligning";
+}
+<h1 style="text-align: center;">@ViewBag.Title</h1>
 
 @foreach (var item in Model)
 {
@@ -21,6 +24,7 @@
 
         <div style="text-align: center;">
             <h2 class="overskrift">@item.Mærke </h2> <h4 class="overskrift">@item.Model</h4>
+            <!--Her henter vi Mærket og Model-navnet i databasen-->
         </div>
     </div>
 }
@@ -34,12 +38,13 @@
         {
             <td>@Html.DisplayFor(modelItem => item.Årgang)</td>
         }
+        <!--Her laver den en table data for hvor Item altså bil der er, ved at hente bilens data i databasen-->
     </tr>
     <tr>
         <th>@Html.DisplayNameFor(model => model.Nypris)</th>
         @foreach (var item in Model)
         {
-    <td>@Html.DisplayFor(modelItem => item.Nypris)</td>
+            <td>@Html.DisplayFor(modelItem => item.Nypris)</td>
         }
     </tr>
     <tr>
@@ -125,6 +130,7 @@
         border-radius: 10px;
         float: left;
         display: block;
+        margin-bottom: 2%;
     }
 
     .pprodukter {
@@ -140,7 +146,7 @@
         height: 20em;
     }
 
-    .overskrift{
+    .overskrift {
         color: black;
     }
 
@@ -156,11 +162,11 @@
         padding: 8px;
     }
 
-    td{
+    td {
         width: 25%
     }
 
-    th{
+    th {
         width: 20%;
     }
 
