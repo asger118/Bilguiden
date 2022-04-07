@@ -24,6 +24,7 @@
 
         <div style="text-align: center;">
             <h2 class="overskrift">@item.Mærke </h2> <h4 class="overskrift">@item.Model</h4>
+            <!--Her henter vi Mærket og Model-navnet i databasen-->
         </div>
     </div>
 }
@@ -37,6 +38,7 @@
         {
             <td>@Html.DisplayFor(modelItem => item.Årgang)</td>
         }
+        <!--Her laver den en table data for hvor Item altså bil der er, ved at hente bilens data i databasen-->
     </tr>
     <tr>
         <th>@Html.DisplayNameFor(model => model.Nypris)</th>
