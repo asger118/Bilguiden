@@ -45,6 +45,7 @@ namespace Bilguiden.dk.Controllers {
             return View(bil);
         }
 
+
         //Rediger detaljer om bil
         [HttpPost]
         public ActionResult RedigerBil(Biler bil, HttpPostedFileBase image1) {
