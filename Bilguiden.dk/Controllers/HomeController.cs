@@ -13,6 +13,7 @@ using System.Collections;
 
 namespace Bilguiden.dk.Controllers {
     public class HomeController : Controller {
+        
         bilguidenDBEntities db = new bilguidenDBEntities();
 
         //Index side
@@ -107,8 +108,6 @@ namespace Bilguiden.dk.Controllers {
                         string message = string.Format("{0}:{1}",
                             validationErrors.Entry.Entity.ToString(),
                             validationError.ErrorMessage);
-                        // raise a new exception nesting
-                        // the current instance as InnerException
                         raise = new InvalidOperationException(message, raise);
                     }
                     throw raise;
@@ -127,12 +126,15 @@ namespace Bilguiden.dk.Controllers {
                 return View(db.Biler.Where(x => x.Drivmiddel == search || search == null).ToList());
             }
             else if (option == "Model") {
+                //Finder Biler med den Model man søger efter
                 return View(db.Biler.Where(x => x.Model == search || search == null).ToList());
             }
             else if (option == "Gearkasse") {
+                //Finder Biler med det Gearkasse man søger efter
                 return View(db.Biler.Where(x => x.Gearkasse == search || search == null).ToList());
             }
             else {
+                //Finder Biler med det Mærke man søger efter
                 return View(db.Biler.Where(x => x.Mærke.StartsWith(search) || search == null).ToList());
             }
         }
