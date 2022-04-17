@@ -9,7 +9,7 @@
 {
     <div class="pprodukter">
         @{
-            if (item.Billede != null)
+            if (item.Billede != null)//hvis billede ikke er lig med 0 henter den billedet fra databasen
             {
                 byte[] billede = item.Billede;
                 var base64 = Convert.ToBase64String(billede);
@@ -18,7 +18,7 @@
             }
             else
             {
-                <img src="~/Images/Billede-mangler.jpg" class="pbilleded1" />
+                <img src="~/Images/Billede-mangler.jpg" class="pbilleded1" />//hvis billedet er lig med 0, udfyldes plades med "Billede-mangler
             }
         }
 
@@ -48,6 +48,7 @@
             <td>@Html.DisplayFor(modelItem => item.Nypris)</td>
         }
     </tr>
+    <!--På samme måde fortsætter det hele vejen ned, bare hvor der bliver henet forskelligt data fra databasen-->
     <tr>
         <th>@Html.DisplayNameFor(model => model.Gearkasse)</th>
         @foreach (var item in Model)
@@ -125,6 +126,7 @@
 
 
 <style>
+    /*Den style der kun bliver brugt på sammenlign-siden ligger her*/
     .pbilleded1 {
         width: 100%;
         height: 13em;

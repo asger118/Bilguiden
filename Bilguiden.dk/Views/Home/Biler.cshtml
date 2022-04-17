@@ -10,13 +10,13 @@
         <!--Billede af bil-->
         <div>
             @{
-                if (item.Billede != null) {
+                if (item.Billede != null) {//hvis billede ikke er lig med 0 henter den billedet fra databasen
                     var base64 = Convert.ToBase64String(item.Billede);
                     var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
                     <img src="@imgsrc" class="pbillede" />
                 }
                 else {
-                    <img src="~/Images/Billede-mangler.jpg" class="pbillede" />
+                    <img src="~/Images/Billede-mangler.jpg" class="pbillede" />//hvis billedet er lig med 0, udfyldes plades med "Billede-mangler
                 }
             }
         </div>
