@@ -53,10 +53,10 @@ namespace Bilguiden.dk.Controllers {
 
             db.Entry(bil).State = EntityState.Modified;
             
-            if (image1 != null) {
+            if (image1 != null) { //Hvis image 1 ikke er lig med 0
                 bil.Billede = new byte[image1.ContentLength];
                 image1.InputStream.Read(bil.Billede, 0, image1.ContentLength);
-            }
+            } //Laver billedet om til binær kode
 
             
             try {

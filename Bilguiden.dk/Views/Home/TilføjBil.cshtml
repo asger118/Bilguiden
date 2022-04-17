@@ -132,8 +132,10 @@
     <input type="submit" value="Tilføj" class="bn3637 bn36"/>
     @Html.ActionLink("Tilbage", "Biler", "home", htmlAttributes: new { @class = "bn3637 bn36" })
 </div>
+
+<!--Success meddelse, hvis dataen er gemt-->
 }
-@if (ViewBag.SavedData == true) {
+@if (ViewBag.SavedData == true) { /*her tjekker den om dataen er gemt*/
     <p class="alert alert-success"><strong>Success!</strong> Din bil er tilføjet!</p>
 }
 
