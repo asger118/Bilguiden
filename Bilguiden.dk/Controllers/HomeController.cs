@@ -91,10 +91,11 @@ namespace Bilguiden.dk.Controllers {
         [HttpPost]
         public ActionResult TilføjBil(Biler NyBil, HttpPostedFileBase image1) {
 
-            if (image1 != null) { 
+            if (image1 != null) { //Hvis image1 ikke er 0
                 NyBil.Billede = new byte[image1.ContentLength];
                 image1.InputStream.Read(NyBil.Billede, 0, image1.ContentLength);
-            }
+            }/*Her bliver billedet lavet om til kode, så det kan kaldes tilbage
+              * når det skal vises i et view*/
 
             db.Biler.Add(NyBil);
 
